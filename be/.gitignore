@@ -123,4 +123,6 @@ dist
 # Ignore all local history of files
 .history
 
+bin/keys
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,node
