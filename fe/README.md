@@ -1,15 +1,24 @@
-# getting-off-here
-버스앱 서비스 관련 PWA 애플리케이션
+# fe
 
-## 👪 기여자
+## Project setup
+```
+npm install
+```
 
-repository에 대해 더 좋은 방향으로 나아갈 수 있다면 언제든지 Issue 및 Pull Request를 요청하세요!
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-- [danial1021](https://github.com/danial1021)
-- [gasd238](https://github.com/gasd238)
-- [dieacake](https://github.com/dieacake)
+### Compiles and minifies for production
+```
+npm run build
+```
 
-## 🔑 사용 기술
+### Lints and fixes files
+```
+npm run lint
+```
 
-<img src="https://vuejs.org/images/logo.png" width="225" height="225" />
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" width="200" height="120" />
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
