@@ -54,12 +54,15 @@ export default {
             items: [
               {
                 title: '로그인',
-                // to: {
-                //   path: '/login'
-                // }
+                to: {
+                  path: '/login'
+                }
               },
               {
-                title: '회원가입'
+                title: '회원가입',
+                to: {
+                  path: '/sign'
+                }
               },
               {
                 title: '아이디/비밀번호 찾기'
@@ -80,61 +83,6 @@ export default {
           }
         ],
         message: "비로그인"
-    // item: 1,
-    // items: [
-    //   {
-    //     title: '로그인', 
-    //     icon: 'people_outline',
-    //     subItems: [
-    //       {
-    //         title: '로그인',
-    //         to: {
-    //           path: ''
-    //         }
-    //       },
-    //       {
-    //         title: '회원가입',
-    //         to: {
-    //           path: ''
-    //         }
-    //       },
-    //       {
-    //         title: '아이디/비밀번호 찾기',
-    //         to: {
-    //           path: ''
-    //         }
-    //       }
-    //     ]
-    //   },
-
-    //   {
-    //     title: '버스/정류장 검색', 
-    //     icon: 'mdi-account',
-    //     subItems: [
-    //       {
-    //         title: '버스검색',
-    //         to: {
-    //           path: ''
-    //         }
-    //       },
-    //       {
-    //         title: '정류장검색',
-    //         to: { 
-    //           path: ''
-    //         }
-    //       }
-    //     ]
-    //   }
-    // ],
   })
-  // logins: [
-  //   ['로그인', 'people_outline',],
-  //   ['회원가입', 'settings'],
-  //   ['아이디/비밀번호 찾기', 'settings'],
-  // ],
-  // searches: [
-  //   ['버스검색', 'people_outline',],
-  //   ['정류장검색', 'settings'],
-  // ]
 }
 </script>
