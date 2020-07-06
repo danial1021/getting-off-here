@@ -1,123 +1,96 @@
+<style module>
+
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+.id{
+  top:0; left:0; bottom:0; right:0;
+  margin: 10% auto;
+}
+.idbar{
+  position: absolute;
+  top:60px; left:0; bottom:0; right:0;
+  margin: 10% auto;
+}
+.years{
+  width: 100%;
+}
+.days{
+  width: 100%;
+}
+.footer{
+  font-family:Nanum Gothic;
+}
+a{
+  color: gray;
+  text-decoration: none;
+  }
+</style>
+
 <template>
-  <div>
-    <v-sheet
-      tile
-      height="54"
-      color="grey lighten-3"
-      class="d-flex"
-    >
-      <v-btn
-        icon
-        class="ma-2"
-        @click="$refs.calendar.prev()"
+  <v-container fluid>
+    <v-row>
+      <v-col
+        cols="12"
+        sm="6"
       >
-        <v-icon>mdi-chevron-left</v-icon>
-      </v-btn>
-      <v-select
-        v-model="type"
-        :items="types"
-        dense
-        outlined
-        hide-details
-        class="ma-2"
-        label="type"
-      ></v-select>
-      <v-select
-        v-model="mode"
-        :items="modes"
-        dense
-        outlined
-        hide-details
-        label="event-overlap-mode"
-        class="ma-2"
-      ></v-select>
-      <v-select
-        v-model="weekday"
-        :items="weekdays"
-        dense
-        outlined
-        hide-details
-        label="weekdays"
-        class="ma-2"
-      ></v-select>
-      <v-spacer></v-spacer>
-      <v-btn
-        icon
-        class="ma-2"
-        @click="$refs.calendar.next()"
+      </v-col>
+      <v-col cols="12"></v-col>
+      <v-col
+        cols="12"
+        md="6"
       >
-        <v-icon>mdi-chevron-right</v-icon>
-      </v-btn>
-    </v-sheet>
-    <v-sheet height="600">
-      <v-calendar
-        ref="calendar"
-        v-model="value"
-        :weekdays="weekday"
-        :type="type"
-        :events="events"
-        :event-overlap-mode="mode"
-        :event-overlap-threshold="30"
-        :event-color="getEventColor"
-        @change="getEvents"
-      ></v-calendar>
-    </v-sheet>
-  </div>
+      </v-col>
+      <v-col
+        cols="12"
+        md="6"
+        :class="$style.idbar"
+      >
+          <v-text-field
+            :label="label"
+            :hint="hint"
+            :outlined="outlined"
+            :persistent-hint="persistentHint"
+            :counter="counterEn ? counter : false"
+            :class="$style.id"
+          ></v-text-field>
+          <br>
+          <v-text-field
+            :label="label1"
+            :hint="hint1"
+            :outlined="outlined"
+            :persistent-hint="persistentHint"
+            :counter="counterEn1 ? counter1 : false"
+            :class="$style.id"
+          ></v-text-field>
+          <footer class="footer">
+          <v-btn color="success" @click="success = true; error = false;">LOGIN</v-btn>
+          <br><br>
+          <a href="/#/sign">회원가입<br></a>
+          <a href="/login">아이디/비밀번호 찾기<br></a>
+          </footer>
+          
+          
+          
+      </v-col>
+    </v-row>
+  </v-container>
+  
 </template>
 
 <script>
   export default {
-    name: 'Login',
     data: () => ({
-      type: 'month',
-      types: ['month', 'week', 'day', '4day'],
-      mode: 'stack',
-      modes: ['stack', 'column'],
-      weekday: [0, 1, 2, 3, 4, 5, 6],
-      weekdays: [
-        { text: 'Sun - Sat', value: [0, 1, 2, 3, 4, 5, 6] },
-        { text: 'Mon - Sun', value: [1, 2, 3, 4, 5, 6, 0] },
-        { text: 'Mon - Fri', value: [1, 2, 3, 4, 5] },
-        { text: 'Mon, Wed, Fri', value: [1, 3, 5] },
-      ],
-      value: '',
-      events: [],
-      colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
-      names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
+      label: 'ID',
+      hint: '영문 숫자 혼용',
+      outlined: true,
+      persistentHint: true,
+      counterEn: true,
+      counter: 0,
+      
+      label1: 'Password',
+      hint1: '8자리 이상',
+      counter1: 0,
     }),
-    methods: {
-      getEvents ({ start, end }) {
-        const events = []
-
-        const min = new Date(`${start.date}T00:00:00`)
-        const max = new Date(`${end.date}T23:59:59`)
-        const days = (max.getTime() - min.getTime()) / 86400000
-        const eventCount = this.rnd(days, days + 20)
-
-        for (let i = 0; i < eventCount; i++) {
-          const allDay = this.rnd(0, 3) === 0
-          const firstTimestamp = this.rnd(min.getTime(), max.getTime())
-          const first = new Date(firstTimestamp - (firstTimestamp % 900000))
-          const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000
-          const second = new Date(first.getTime() + secondTimestamp)
-
-          events.push({
-            name: this.names[this.rnd(0, this.names.length - 1)],
-            start: first,
-            end: second,
-            color: this.colors[this.rnd(0, this.colors.length - 1)],
-            timed: !allDay,
-          })
-        }
-
-        this.events = events
-      },
-      getEventColor (event) {
-        return event.color
-      },
-      rnd (a, b) {
-        return Math.floor((b - a + 1) * Math.random()) + a
-      },
-    },
   }
+  
 </script>

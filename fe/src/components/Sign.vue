@@ -1,69 +1,147 @@
+<style module>
+.id{
+  top:0; left:0; bottom:0; right:0;
+  margin: 10% auto;
+}
+.idbar{
+  position: absolute;
+  top:60px; left:0; bottom:0; right:0;
+  margin: 10% auto;
+}
+.years{
+  width: 100%;
+}
+.days{
+  width: 100%;
+}
+a{
+  color: gray;
+  text-decoration: none;
+  }
+</style>
+
 <template>
-  <v-row>
-    <v-col>
-      <v-sheet height="400">
-        <v-calendar
-          ref="calendar"
-          :now="today"
-          :value="today"
-          :events="events"
-          color="primary"
-          type="week"
-        ></v-calendar>
-      </v-sheet>
-    </v-col>
-  </v-row>
+  <v-container fluid>
+    <v-row>
+      <v-col
+        cols="12"
+        sm="6"
+      >
+      </v-col>
+      <v-col cols="12"></v-col>
+      <v-col
+        cols="12"
+        md="6"
+      >
+      </v-col>
+      <v-col
+        cols="12"
+        md="6"
+        :class="$style.idbar"
+      >
+          <v-text-field
+            :label="label"
+            :hint="hint"
+            :outlined="outlined"
+            :persistent-hint="persistentHint"
+            :counter="counterEn ? counter : false"
+            :class="$style.id"
+          ></v-text-field>
+          <br>
+          <v-text-field
+            :label="label1"
+            :hint="hint1"
+            :outlined="outlined"
+            :persistent-hint="persistentHint"
+            :counter="counterEn1 ? counter1 : false"
+            :class="$style.id"
+          ></v-text-field>
+
+          <br>
+          <section class="birth">
+            <table>
+              <td class="tables">
+                <v-container style="padding: 0; width: 130px">
+                <v-overflow-btn
+                 :items="years"
+                 :outlined="outlined"
+                 :hint="yearhint"
+                 :persistent-hint="persistentHint"
+                 :class="$style.years"
+                 ></v-overflow-btn>
+                </v-container>
+              </td>
+              <td class="tables">
+                <v-container style="width: 120px; margin: 0 0 0 0;">
+                <v-overflow-btn
+                 :items="month"
+                 :outlined="outlined"
+                 :hint="monthhint"
+                 :persistent-hint="persistentHint"
+                 :class="$style.month"
+                 ></v-overflow-btn>
+                </v-container>
+              </td>
+              <td class="tables">
+                <v-text-field
+                  :outlined="outlined"
+                  :class="$style.days"
+                  :hint="dayhint"
+                  :persistent-hint="persistentHint"
+                ></v-text-field>
+              </td>
+            </table>
+
+          </section>
+          <br>
+          
+          <v-text-field
+            :label="label2"
+            :hint="hint2"
+            :outlined="outlined"
+            :persistent-hint="persistentHint"
+            :counter="counterEn ? counter2 : false"
+            :class="$style.id"
+          ></v-text-field>
+
+          <footer class="footer">
+          <v-btn color="success" @click="success = true; error = false;">REGISTER</v-btn>
+          <br><br>
+          <a href="/#/login">로그인<br></a>
+          
+          </footer>
+
+      </v-col>
+    </v-row>
+  </v-container>
+  
 </template>
 
 <script>
   export default {
-    name: 'Sign',
     data: () => ({
-      today: '2019-01-08',
-      events: [
-        {
-          name: 'Weekly Meeting',
-          start: '2019-01-07 09:00',
-          end: '2019-01-07 10:00',
-        },
-        {
-          name: 'Thomas\' Birthday',
-          start: '2019-01-10',
-        },
-        {
-          name: 'Mash Potatoes',
-          start: '2019-01-09 12:30',
-          end: '2019-01-09 15:30',
-        },
-      ],
+      label: 'ID',
+      hint: '영문 숫자 혼용',
+      outlined: true,
+      persistentHint: true,
+      counterEn: true,
+      counter: 0,
+      
+      label1: 'Password',
+      hint1: '8자리 이상',
+      counter1: 0,
+
+      years: ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008' ,'2009', '2010'],
+      month: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+
+      label2: 'email',
+      hint2: '이메일',
+      counter2: 0,
+
+      yearhint: 'YEAR',
+      monthhint: 'MONTH',
+      dayhint: 'DAY'
     }),
-    mounted () {
-      this.$refs.calendar.scrollToTime('08:00')
-    },
   }
+  
 </script>
-
-<style scoped>
-.my-event {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  border-radius: 2px;
-  background-color: #1867c0;
-  color: #ffffff;
-  border: 1px solid #1867c0;
-  font-size: 12px;
-  padding: 3px;
-  cursor: pointer;
-  margin-bottom: 1px;
-  left: 4px;
-  margin-right: 8px;
-  position: relative;
-}
-
-.my-event.with-time {
-  position: absolute;
-  right: 4px;
-  margin-right: 0px;
-}
-</style>

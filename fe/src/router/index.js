@@ -19,6 +19,11 @@ Vue.use(VueRouter)
         name: 'Sign',
         component: () => import('../components/Sign.vue')
       },
+      {
+        path: '/login_copy',
+        name: 'Login_copy',
+        component: () => import('../components/Login_copy.vue')
+      },
     ]
   }
 ]
