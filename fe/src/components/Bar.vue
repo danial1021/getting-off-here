@@ -9,7 +9,7 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-title>
-        <h1>
+        <h1 align="center">
           LET ' S BE
         </h1>
       </v-toolbar-title>
