@@ -20,7 +20,7 @@
         :key="i"
         :active="true"
         :prepend-icon="item.icon"
-        no-action 
+        no-action
       >
         <template v-slot:activator>
           <v-list-item-content>
@@ -48,41 +48,59 @@ export default {
   data: () => ({
     item: 1,
     items: [
+      {
+        icon: 'home',
+        title: '시작',
+        items: [
           {
-            icon: 'people_outline',
-            title: '로그인',
-            items: [
-              {
-                title: '로그인',
-                to: {
-                  path: '/login'
-                }
-              },
-              {
-                title: '회원가입',
-                to: {
-                  path: '/sign'
-                }
-              },
-              {
-                title: '아이디/비밀번호 찾기'
-              }
-            ],
+            title: '메인',
+            to: {
+              path: '/'
+            }
           },
           {
-            icon: 'search',
-            title: '버스/정류장 검색',            
-            items: [
-              {
-                title: '버스 검색'
-              },
-              {
-                title: '정류장 검색'
-              }
-            ],
+            title: '사용방법',
+            to: {
+              path: '/use'
+            }
+          }
+        ]
+      },
+      {
+        icon: 'people_outline',
+        title: '로그인',
+        items: [
+          {
+            title: '로그인',
+            to: {
+              path: '/login'
+            }
+          },
+          {
+            title: '회원가입',
+            to: {
+              path: '/sign'
+            }
+          },
+          {
+            title: '아이디/비밀번호 찾기'
           }
         ],
-        message: "비로그인"
+      },
+      {
+        icon: 'search',
+        title: '버스/정류장 검색',            
+        items: [
+          {
+            title: '버스 검색'
+          },
+          {
+            title: '정류장 검색'
+          }
+        ],
+      }
+    ],
+    message: "비로그인"
   })
 }
 </script>
