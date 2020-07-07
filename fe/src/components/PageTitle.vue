@@ -30,8 +30,6 @@
 <script>
 export default {
     Name: 'PageTitle',
-    data: ()=> ({
-        title: '버스앱'  
-    })
+    props: ["title"]
 }
 </script>

@@ -1,30 +1,7 @@
 <template>
   <div>
     <Bar />
-    <v-layout row wrap>
-      <v-flex sm4>
-          <v-btn 
-          icon
-          @click="$router.go('1')"
-          style="float:right"
-          >
-              <v-icon>arrow_back</v-icon>
-          </v-btn>
-      </v-flex>
-      
-      <v-flex sm4>
-          <h1 align="center">{{ title }}</h1>
-      </v-flex>
-      
-      <v-flex sm4>
-          <v-btn 
-            icon
-            @click="$router.go('-1')"
-          >
-              <v-icon>arrow_forward</v-icon>
-          </v-btn> 
-      </v-flex>
-    </v-layout>
+    <PageTitle :title=title />
     <!-- <page-title title="로그인"></page-title> -->
     <v-container fluid>
       <v-row>
@@ -79,6 +56,7 @@
 // @ is an alias to /src
 import Bar from '@/components/Bar.vue'
 import Nav from '@/components/Nav.vue'
+import PageTitle from '@/components/PageTitle.vue'
 
 
 export default {
@@ -98,7 +76,8 @@ export default {
   }),
   components: {
     Bar,
-    Nav
+    Nav,
+    PageTitle
   }
 }
 </script>
