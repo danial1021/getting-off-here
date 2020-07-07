@@ -67,10 +67,7 @@ a{
           <br><br>
           <a href="/#/sign">회원가입<br></a>
           <a href="/login">아이디/비밀번호 찾기<br></a>
-          </footer>
-          
-          
-          
+          </footer>  
       </v-col>
     </v-row>
   </v-container>

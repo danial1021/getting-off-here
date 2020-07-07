@@ -31,7 +31,11 @@
 export default {
     Name: 'Page',
     data: ()=> ({
-        title: '버스앱'        
-    })
+        title: '버스앱'  
+    }),
+
+    // mounted: {
+        
+    // }
 }
 </script>
