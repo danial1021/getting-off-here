@@ -29,13 +29,9 @@
 
 <script>
 export default {
-    Name: 'Page',
+    Name: 'PageTitle',
     data: ()=> ({
         title: '버스앱'  
-    }),
-
-    // mounted: {
-        
-    // }
+    })
 }
 </script>

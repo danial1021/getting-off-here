@@ -7,19 +7,29 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/Home.vue'),
-    children: [
-      {
-        path: '/login',
-        name: 'Login',
-        component: () => import('../components/Login.vue')
-      },
-      {
-        path: '/sign',
-        name: 'Sign',
-        component: () => import('../components/Sign.vue')
-      }
-    ]
+    component: () => import('../views/Home.vue')
+    // children: [
+    //   {
+    //     path: '/login',
+    //     name: 'Login',
+    //     component: () => import('../components/Login.vue')
+    //   },
+    //   {
+    //     path: '/sign',
+    //     name: 'Sign',
+    //     component: () => import('../components/Sign.vue')
+    //   }
+    // ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue'),
+  },
+  {
+    path: '/sign',
+    name: 'Sign',
+    component: () => import('../views/Sign.vue'),
   }
 ]
 

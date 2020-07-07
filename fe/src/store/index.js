@@ -16,11 +16,11 @@ export default new Vuex.Store({
       id: '',
       img: 'https://randomuser.me/api/portraits/men/85.jpg'
     },
-    page: {
-      // titles: {
-      //   '/login': '로그인',
-      //   '/join': '회원가입'
-      // }
+    items: {
+      title: {
+        '/login': '로그인',
+        '/join': '회원가입'
+      }
     }
   },
   mutations: { // mutations는 변수를 조작하는 함수를 의미
