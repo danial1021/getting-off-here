@@ -24,12 +24,6 @@ export default new Vuex.Store({
     }
   },
   mutations: { // mutations는 변수를 조작하는 함수를 의미
-    pop (state, s) {
-      state.attr.msg = s.msg
-      state.attr.color = s.color
-      state.attr.act = false
-      if (s.act === undefined) state.attr.act = true
-    }
   },
   actions: {
   },
