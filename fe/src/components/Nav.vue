@@ -27,13 +27,12 @@
             <v-list-item-title v-text="item.title"></v-list-item-title>
           </v-list-item-content>
         </template>
-
         <v-list-item
           v-for="subItem in item.items"
           :key="subItem.title"
           :to="subItem.to"
         >
-          <v-list-item-content>
+          <v-list-item-content @click="$store.state.drawer = !$store.state.drawer">
             <v-list-item-title v-text="subItem.title"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>

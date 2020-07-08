@@ -4,8 +4,7 @@
       color="rgba(69, 94, 255)"
       dark
     >
-      <v-app-bar-nav-icon @click="$store.state.drawer = !drawer"></v-app-bar-nav-icon>
-
+      <v-app-bar-nav-icon @click="$store.state.drawer = true"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
 
       <v-toolbar-title>
@@ -26,9 +25,7 @@
 <script>
   export default {
     name: "Bar",
-
     data: () => ({
-      drawer: false
     })
   }
 </script>
