@@ -5,23 +5,24 @@ module.exports = {
 
   pwa: {
     name: 'GOH',
-    themeColor: '#4DBA87',
-    msTileColor: '#000000',
+    themeColor: '#0f4c81',
+    msTileColor: '#0f4c81',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
 
-    // // configure the workbox plugin
-    // workboxPluginMode: 'InjectManifest',
-    // workboxOptions: {
-    //   // swSrc is required in InjectManifest mode.
-    //   swSrc: 'dev/sw.js',
-    //   // ...other Workbox xoptions...
-    // },
+    // configure the workbox plugin
+    workboxPluginMode: 'InjectManifest',
+    workboxOptions: {
+      // swSrc is required in InjectManifest mode.
+      swSrc: 'dev/sw.js',
+      // ...other Workbox xoptions...
+    },
     manifestOptions: {
       "name": "GOH",
       "short_name": "GOH",
       "start_url": "/",
-      "display": "standalone"
+      "display": "standalone",
+      // "background_color": "#0f4c81"
     },
     iconPaths: {
       favicon32: 'img/icons/favicon-32x32.png',
