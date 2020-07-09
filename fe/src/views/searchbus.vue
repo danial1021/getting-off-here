@@ -19,7 +19,7 @@
                     </v-list-item-content>
                 </v-list-item>
             </v-card>
-        <!-- v-card 태그가 버스정류장 한 칸입니다. -->
+        <!-- v-card 태그가 버스 한 칸입니다. -->
             <v-card class="mx-auto" max-width="100%" outlined>
                 <v-list-item three-line>
                     <v-list-item-content>
