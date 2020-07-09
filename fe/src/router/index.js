@@ -30,6 +30,16 @@ Vue.use(VueRouter)
     path: '/sign',
     name: 'Sign',
     component: () => import('../views/Sign.vue'),
+  },
+  {
+    path: '/searchbus',
+    name: 'searchbus',
+    component: () => import('../views/searchbus.vue'),
+  },
+  {
+    path: '/searchstation',
+    name: 'searchstation',
+    component: () => import('../views/searchstation.vue'),
   }
 ]
 

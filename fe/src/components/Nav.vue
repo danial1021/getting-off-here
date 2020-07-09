@@ -91,10 +91,16 @@ export default {
         title: '버스 및 정류장',            
         items: [
           {
-            title: '버스 검색'
+            title: '버스 검색',
+            to:{
+              path: '/searchbus'
+            }
           },
           {
-            title: '정류장 검색'
+            title: '정류장 검색',
+            to:{
+              path: '/searchstation'
+            }
           }
         ],
       }

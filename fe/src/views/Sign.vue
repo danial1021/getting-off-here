@@ -4,22 +4,10 @@
     <PageTitle :title=title />
     <v-container fluid>
       <v-row>
-        <v-col
-          cols="12"
-          sm="6"
-        >
-        </v-col>
+       <v-col cols="12" sm="6"></v-col>
         <v-col cols="12"></v-col>
-        <v-col
-          cols="12"
-          md="6"
-        >
-        </v-col>
-        <v-col
-          cols="12"
-          md="6"
-          :class="$style.idbar"
-        >
+        <v-col cols="12" md="6"></v-col>
+        <v-col cols="12" md="6" :class="$style.mainform">
             <v-text-field
               :label="label"
               :hint="hint"
@@ -181,7 +169,7 @@ export default {
   top:0; left:0; bottom:0; right:0;
   margin: 10% auto;
 }
-.idbar{
+.mainform{
   position: absolute;
   top:60px; left:0; bottom:0; right:0;
   margin: 10% auto;
