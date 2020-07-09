@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <SplashScreen v-if="loading" />
-    <router-view />
+    <router-view v-else/>
   </v-app>
 </template>
 
@@ -17,7 +17,7 @@ export default {
   components: {
     SplashScreen
   },
-  mounted() {
+  created() {
       setTimeout(() => {
           this.loading = false
       }, 3000)
