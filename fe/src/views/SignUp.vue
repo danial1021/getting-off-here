@@ -9,11 +9,10 @@
         <v-col cols="12"></v-col>
         <v-col cols="12" md="6"></v-col>
         <v-col cols="12" md="6" :class="$style.mainform">
+          <v-form>
             <v-text-field
-            v-validate="'required|min:1|max:30'"
               v-model="form.id"
               label="ID"
-              data-vv-name="id"
               :outlined=true
               hint="영문 숫자 혼용"
               :persistent-hint=true
@@ -26,9 +25,7 @@
             <br>
             <v-text-field
               v-model="form.pw"
-              v-validate="'required|min:8|max:30'"
               label="Password"
-              data-vv-name="pw"
               hint="8자리 이상"
               type="password"
               :outlined=true
@@ -40,11 +37,9 @@
             ></v-text-field>
 
             <v-text-field
-            v-validate="'required|min:1|max:30'"
               v-model="form.name"
               label="이름"
               hint="ex) 홍길동"
-              data-vv-name="name"
               :outlined=true
               :persistent-hint=true
               :counter="30"
@@ -61,7 +56,6 @@
                   v-model="form.year"
                   :items="years"
                   :outlined=true
-                  data-vv-name="year"
                   hint="YEAR"
                   :persistent-hint=true
                   :class="$style.years"
@@ -75,7 +69,6 @@
                   v-model="form.month"
                   :items="month"
                   :outlined=true
-                  data-vv-name="month"
                   hint="MONTH"
                   :persistent-hint=true
                   :class="$style.month"
@@ -88,7 +81,6 @@
                     v-model="form.day"
                     :outlined=true
                     :class="$style.days"
-                    data-vv-name="day"
                     hint="DAY"
                     :persistent-hint=true
                     required
@@ -100,11 +92,9 @@
             <br>
             
             <v-text-field
-              v-validate="'required|min:1|max:11'"
               v-model="form.phonenumber"
               label="Phone number"
               hint="휴대전화"
-              data-vv-name="phonenumber"
               :outlined=true
               :persistent-hint=true
               required
@@ -112,9 +102,9 @@
             ></v-text-field>
             <br>
 
-            <v-btn color="primary" @click="submit">가 입</v-btn>
+            <v-btn color="primary" @click="v-on">가 입</v-btn>
             <v-btn color="secondary" @click="clear">초기화</v-btn>
-            
+          </v-form>
         </v-col>
       </v-row>
     </v-container>
@@ -139,13 +129,14 @@
 import Bar from '@/components/Bar.vue'
 import Nav from '@/components/Nav.vue'
 import PageTitle from '@/components/PageTitle.vue'
+// import ko from 'vee-validate/dist/locale/ko'
 
 export default {
   name: 'SignUp',
 
-  $_veeValidate: {
-    validator: 'new'
-  },
+  // $_veeValidate: {
+  //   validator: 'new'
+  // },
   
   data: () => ({
     title: '회원가입',
@@ -169,12 +160,39 @@ export default {
       color: 'warning'
     },
 
+    // dictionary: {
+    //   attributes: {
+    //     id: '아이디',
+    //     pw: '비밀번호',
+    //     name: '이름',
+    //     year: '년',
+    //     month: '월',
+    //     day: '일',
+    //     phonenumber: '핸드폰번호'
+    //     // custom attributes
+    //   },
+    //   custom: {
+    //     // name: {
+    //     //   required: () => 'Name can not be empty',
+    //     //   max: 'The name field may not be greater than 10 characters'
+    //     //   // custom messages
+    //     // },
+    //     // select: {
+    //     //   required: 'Select field is required'
+    //     // }
+    //   }
+    // }
+
     // option: :rules="phoneRules"
     // phoneRules: [
     //     v => !!v || '휴대폰 번호를 입력해주세요.',
     //     v => /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/.test(v) || '휴대폰 번호를 입력해주세요.',
     //   ],
   }),
+
+  // mounted() {
+  //   this.$validator.localize('en', this.dictionary)
+  // },
 
   computed:{
     passwordrules() {
@@ -195,28 +213,22 @@ export default {
   },
   
   methods: {
-    onVerify (r) {
-      console.log(r)
-      this.form.response = r
-      this.submit()
-    },
-    onExpired () {
-      this.form.response = ''
-    },
     submit () {
-      this.$validator.validateAll()
-        .then(r => {
-          if (!r) throw new Error('모두 기입해주세요')
-          return this.$axios.post('/sign/check', this.form)
-        })
-        .then(r => {
-          if (!r.data.success) throw new Error(r.data.msg)
-          this.$store.commit('pop', { msg: '가입 완료 되었습니다', color: 'success' })
-          this.$router.push('/login')
-        })
-        .catch(e => {
-          if (!e.response) this.$store.commit('pop', { msg: e.message, color: 'warning' })
-        })
+      // this.$http.post("https://reqres.in/api/register")
+      //   .then(() => {
+      //     "email": "eve.holt@reqres.in",
+      //     "password": "pistol"
+      //   })
+
+      // this.$axios.post('/sign/check', this.form)
+      // .then(form => {
+      //   if (!form.data.success) throw new Error(form.data.msg)
+      //   this.$store.commit('pop', { msg: '가입 완료 되었습니다', color: 'success' })
+      //   this.$router.push('/login')
+      // })
+      // .catch(e => {
+      //   if (!e.response) this.$store.commit('pop', { msg: e.message, color: 'warning' })
+      // })
     },
     pop (m, cl) {
       this.sb.act = true
@@ -231,7 +243,6 @@ export default {
       this.form.month = ''
       this.form.day = ''
       this.form.phonenumber = ''
-      this.$validator.reset()
     }
   },
 

@@ -3,7 +3,12 @@
     <v-list>
       <v-list-item avatar>
         <v-list-item-avatar>
-          <v-icon>fa fa-bus</v-icon>
+          <v-avatar>
+            <img
+              src="https://cdn.vuetifyjs.com/images/john.jpg"
+              alt="John"
+            >
+          </v-avatar>
         </v-list-item-avatar>
         <v-list-item-content>
           <v-list-item-title>{{ message }}</v-list-item-title>
