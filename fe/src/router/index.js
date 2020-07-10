@@ -27,19 +27,19 @@ Vue.use(VueRouter)
     component: () => import('../views/Login.vue'),
   },
   {
-    path: '/sign',
-    name: 'Sign',
-    component: () => import('../views/Sign.vue'),
+    path: '/signup',
+    name: 'SignUp',
+    component: () => import('../views/SignUp.vue'),
   },
   {
     path: '/searchbus',
-    name: 'searchbus',
-    component: () => import('../views/searchbus.vue'),
+    name: 'SearchBus',
+    component: () => import('../views/SearchBus.vue'),
   },
   {
     path: '/searchstation',
-    name: 'searchstation',
-    component: () => import('../views/searchstation.vue'),
+    name: 'SearchStation',
+    component: () => import('../views/SearchStation.vue'),
   }
 ]
 

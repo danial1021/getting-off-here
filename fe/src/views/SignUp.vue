@@ -108,7 +108,7 @@ import Nav from '@/components/Nav.vue'
 import PageTitle from '@/components/PageTitle.vue'
 
 export default {
-  name: 'Home',
+  name: 'SignUp',
   data: () => ({
     title: '회원가입',
     label: 'ID',

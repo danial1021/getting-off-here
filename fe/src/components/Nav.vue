@@ -60,7 +60,7 @@ export default {
           {
             title: '사용방법',
             to: {
-              path: '/use'
+              path: '/using'
             }
           }
         ]
@@ -78,7 +78,7 @@ export default {
           {
             title: '회원가입',
             to: {
-              path: '/sign'
+              path: '/signup'
             }
           },
           {

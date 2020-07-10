@@ -45,7 +45,7 @@ import PageTitle from '@/components/PageTitle.vue'
 
 
 export default {
-  name: 'Home',
+  name: 'SearchBus',
   data: () => ({
     title: '버스 검색',
   }),
