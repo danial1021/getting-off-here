@@ -1,8 +1,18 @@
+const path = require('path')
+
 module.exports = {
   "transpileDependencies": [
     "vuetify"
   ],
-
+  outputDir : path.resolve(__dirname, "../be/public/"),
+  devServer: { 
+        proxy: { // proxyTable 설정 
+        '/': { 
+            target: 'http://localhost:3000/api/', 
+            changeOrigin: true
+            } 
+        } 
+    },
   pwa: {
     name: 'GOH',
     themeColor: '#0f4c81',
