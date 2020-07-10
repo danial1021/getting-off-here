@@ -102,7 +102,7 @@
             ></v-text-field>
             <br>
 
-            <v-btn color="primary" @click="v-on">가 입</v-btn>
+            <v-btn color="primary" @click="submit">가 입</v-btn>
             <v-btn color="secondary" @click="clear">초기화</v-btn>
           </v-form>
         </v-col>
@@ -129,14 +129,9 @@
 import Bar from '@/components/Bar.vue'
 import Nav from '@/components/Nav.vue'
 import PageTitle from '@/components/PageTitle.vue'
-// import ko from 'vee-validate/dist/locale/ko'
 
 export default {
   name: 'SignUp',
-
-  // $_veeValidate: {
-  //   validator: 'new'
-  // },
   
   data: () => ({
     title: '회원가입',
@@ -160,39 +155,12 @@ export default {
       color: 'warning'
     },
 
-    // dictionary: {
-    //   attributes: {
-    //     id: '아이디',
-    //     pw: '비밀번호',
-    //     name: '이름',
-    //     year: '년',
-    //     month: '월',
-    //     day: '일',
-    //     phonenumber: '핸드폰번호'
-    //     // custom attributes
-    //   },
-    //   custom: {
-    //     // name: {
-    //     //   required: () => 'Name can not be empty',
-    //     //   max: 'The name field may not be greater than 10 characters'
-    //     //   // custom messages
-    //     // },
-    //     // select: {
-    //     //   required: 'Select field is required'
-    //     // }
-    //   }
-    // }
-
     // option: :rules="phoneRules"
     // phoneRules: [
     //     v => !!v || '휴대폰 번호를 입력해주세요.',
     //     v => /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/.test(v) || '휴대폰 번호를 입력해주세요.',
     //   ],
   }),
-
-  // mounted() {
-  //   this.$validator.localize('en', this.dictionary)
-  // },
 
   computed:{
     passwordrules() {
@@ -214,21 +182,18 @@ export default {
   
   methods: {
     submit () {
-      // this.$http.post("https://reqres.in/api/register")
-      //   .then(() => {
-      //     "email": "eve.holt@reqres.in",
-      //     "password": "pistol"
-      //   })
-
-      // this.$axios.post('/sign/check', this.form)
-      // .then(form => {
-      //   if (!form.data.success) throw new Error(form.data.msg)
-      //   this.$store.commit('pop', { msg: '가입 완료 되었습니다', color: 'success' })
-      //   this.$router.push('/login')
-      // })
-      // .catch(e => {
-      //   if (!e.response) this.$store.commit('pop', { msg: e.message, color: 'warning' })
-      // })
+      this.$http.post('/sign/check', { 
+        form: this.form
+      })
+      .then((res) => {
+        if (res.data.success == true) {
+          this.$store.commit('pop', { msg: '가입 완료 되었습니다', color: 'success' })
+          this.$router.push('/login') 
+        }
+      })
+      .catch(e => {
+        if(!e.res) this.$store.commit('pop', { msg: e.message, color: 'warning' })
+      })
     },
     pop (m, cl) {
       this.sb.act = true

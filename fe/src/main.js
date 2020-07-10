@@ -4,13 +4,10 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
-// import axios from 'axios'
-// import * as VeeValidate from 'vee-validate';
+import axios from 'axios'
 
 Vue.config.productionTip = false
-// Vue.prototype.$http = axios
-
-// Vue.use(VeeValidate)
+Vue.prototype.$http = axios
 
 new Vue({
   router,
