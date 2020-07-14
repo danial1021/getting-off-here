@@ -29,7 +29,7 @@
           <footer class="footer">
           <v-btn color="#4DD0E1" @click="success = true; error = false;">LOGIN</v-btn>
           <br><br>
-          <a href="/#/sign">회원가입<br></a>
+          <a href="/#/SignUp">회원가입<br></a>
           <a href="/login">아이디/비밀번호 찾기<br></a>
           </footer> 
         </v-col>
