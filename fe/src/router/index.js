@@ -2,13 +2,30 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
 
+const ifNotAuthenticated = (to, from, next) => {
+  if (!store.getters.isAuthenticated) {
+    next()
+    return
+  }
+  next('/')
+}
+
+const ifAuthenticated = (to, from, next) => {
+  if (store.getters.isAuthenticated) {
+    next()
+    return
+  }
+  next('/login')
+}
+
 Vue.use(VueRouter)
 
   const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/Home.vue')
+    component: () => import('../views/Home.vue'),
+    beforeEnter: ifNotAuthenticated
     // nested route
     // children: [
     //   {
@@ -27,45 +44,31 @@ Vue.use(VueRouter)
     path: '/login',
     name: 'Login',
     component: () => import('../views/Login.vue'),
+    beforeEnter: ifNotAuthenticated
   },
   {
     path: '/signup',
     name: 'SignUp',
     component: () => import('../views/SignUp.vue'),
+    beforeEnter: ifNotAuthenticated
   },
   {
     path: '/searchbus',
     name: 'SearchBus',
     component: () => import('../views/SearchBus.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     path: '/searchstation',
     name: 'SearchStation',
     component: () => import('../views/SearchStation.vue'),
-  },
-  {
-    path: '/secure',
-    name: 'Secure',
-    component: () => import('../views/Secure.vue'),
-    meta: { 
-      requiresAuth: true
-    }
-  },
+    beforeEnter: ifAuthenticated
+  }
 ]
 
-// router.beforeEach((to, from, next) => {
-//   if(to.matched.some(record => record.meta.requiresAuth)) {
-//     if (store.getters.isLoggedIn) {
-//       next()
-//       return
-//     }
-//     next('/login') 
-//   } else {
-//     next() 
-//   }
-// })
-
 const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes
 })
 

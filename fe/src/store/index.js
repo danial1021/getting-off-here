@@ -16,6 +16,7 @@ export default new Vuex.Store({
     token: localStorage.getItem('token') || '',
     user : {}
   },
+
   mutations: { // mutations는 변수를 조작하는 함수를 의미
     pop (state, d) {
       state.sb.msg = d.msg
@@ -40,6 +41,7 @@ export default new Vuex.Store({
       state.token = ''
     }
   },
+
   actions: {
     login({commit}, user){
       return new Promise((resolve, reject) => {
@@ -92,8 +94,9 @@ export default new Vuex.Store({
   },
 
   getters : {
-    isLoggedIn: state => !!state.token,
+    isAuthenticated: state => !!state.token,
     authStatus: state => state.status,
+    getToken: state => state.token
   },
   
   modules: {
