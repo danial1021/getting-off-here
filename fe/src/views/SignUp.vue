@@ -20,7 +20,7 @@
               :class="$style.id"
               required
             ></v-text-field>
-            <v-btn color="success" >아이디 중복</v-btn>
+            <v-btn color="success">아이디 중복</v-btn>
             <br>
             <br>
             <v-text-field
@@ -100,9 +100,7 @@
               required
               :class="$style.id"
             ></v-text-field>
-            <br>
-
-            <v-btn color="primary" @click="submit">가 입</v-btn>
+            <v-btn color="primary" @click="submit" style="margin: 4px;">가 입</v-btn>
             <v-btn color="secondary" @click="clear">초기화</v-btn>
           </v-form>
         </v-col>
@@ -169,16 +167,14 @@ export default {
           const rule =
             v => (v || '').indexOf(' ') < 0 ||
               '띄어쓰기는 사용할수 없습니다.'
-
           rules.push(rule)
-
         }
-
         return rules
     }
   },
   
   methods: {
+    
     submit () {
       let data = {
         id: this.id,
