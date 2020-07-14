@@ -182,19 +182,33 @@ export default {
   
   methods: {
     submit () {
-      this.$http.post('/sign/check', { 
-        form: this.form
-      })
-      .then((res) => {
-        if (res.data.success == true) {
-          this.$store.commit('pop', { msg: '가입 완료 되었습니다', color: 'success' })
-          this.$router.push('/login') 
-        }
-      })
-      .catch(e => {
-        if(!e.res) this.$store.commit('pop', { msg: e.message, color: 'warning' })
-      })
-    },
+      let form = {
+        id: this.id,
+        pw: this.pw,
+        name: this.name,
+        year: this.year,
+        month: this.month,
+        day: this.day,
+        phonenumber: this.phonenumber
+      }
+      this.$store.dispatch('signup', form)
+      .then(() => this.$router.push('/login'))
+      .catch(err => console.log(err))
+      },
+    // submit () {
+    //   this.$http.post('/sign/check', { 
+    //     form: this.form
+    //   })
+    //   .then((res) => {
+    //     if (res.data.success == true) {
+    //       this.$store.commit('pop', { msg: '가입 완료 되었습니다', color: 'success' })
+    //       this.$router.push('/login') 
+    //     }
+    //   })
+    //   .catch(e => {
+    //     if(!e.res) this.$store.commit('pop', { msg: e.message, color: 'warning' })
+    //   })
+    // },
     pop (m, cl) {
       this.sb.act = true
       this.sb.msg = m

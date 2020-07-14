@@ -41,8 +41,28 @@ Vue.use(VueRouter)
     path: '/searchstation',
     name: 'SearchStation',
     component: () => import('../views/SearchStation.vue'),
-  }
+  },
+  {
+    path: '/secure',
+    name: 'Secure',
+    component: () => import('../views/Secure.vue'),
+    meta: { 
+      requiresAuth: true
+    }
+  },
 ]
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) {
+      next()
+      return
+    }
+    next('/login') 
+  } else {
+    next() 
+  }
+})
 
 const router = new VueRouter({
   routes

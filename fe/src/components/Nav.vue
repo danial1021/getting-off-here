@@ -106,6 +106,20 @@ export default {
       }
     ],
     message: "비로그인"
-  })
+  }),
+    computed : {
+      isLoggedIn () { 
+        return this.$store.getters.isLoggedIn
+      }
+    },
+    methods: {
+      logout () {
+        this.$store.dispatch('logout')
+        .then(() => {
+          this.$router.push('/login')
+        })
+      }
+    },
+  
 }
 </script>
