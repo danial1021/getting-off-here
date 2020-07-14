@@ -11,7 +11,7 @@
         <v-col cols="12" md="6" :class="$style.mainform">
           <v-form>
             <v-text-field
-              v-model="form.id"
+              v-model="id"
               label="ID"
               :outlined=true
               hint="영문 숫자 혼용"
@@ -24,7 +24,7 @@
             <br>
             <br>
             <v-text-field
-              v-model="form.pw"
+              v-model="pw"
               label="Password"
               hint="8자리 이상"
               type="password"
@@ -37,7 +37,7 @@
             ></v-text-field>
 
             <v-text-field
-              v-model="form.name"
+              v-model="name"
               label="이름"
               hint="ex) 홍길동"
               :outlined=true
@@ -53,7 +53,7 @@
                 <td class="tables">
                   <v-container style="padding: 0; width: 130px">
                   <v-overflow-btn
-                  v-model="form.year"
+                  v-model="year"
                   :items="years"
                   :outlined=true
                   hint="YEAR"
@@ -66,8 +66,8 @@
                 <td class="tables">
                   <v-container style="width: 120px; margin: 0 0 0 0;">
                   <v-overflow-btn
-                  v-model="form.month"
-                  :items="month"
+                  v-model="month"
+                  :items="months"
                   :outlined=true
                   hint="MONTH"
                   :persistent-hint=true
@@ -78,7 +78,7 @@
                 </td>
                 <td class="tables">
                   <v-text-field
-                    v-model="form.day"
+                    v-model="day"
                     :outlined=true
                     :class="$style.days"
                     hint="DAY"
@@ -92,7 +92,7 @@
             <br>
             
             <v-text-field
-              v-model="form.phonenumber"
+              v-model="phonenumber"
               label="Phone number"
               hint="휴대전화"
               :outlined=true
@@ -137,17 +137,15 @@ export default {
     title: '회원가입',
 
     years: ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008' ,'2009', '2010'],
-    month: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+    months: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
 
-    form: {
-      id: '',
-      pw: '',
-      name: '',
-      year: '',
-      month: '',
-      day: '',
-      phonenumber: ''
-    },
+    id: '',
+    pw: '',
+    name: '',
+    year: '',
+    month: '',
+    day: '',
+    phonenumber: '',
 
     sb: {
       act: false,
@@ -182,7 +180,7 @@ export default {
   
   methods: {
     submit () {
-      let form = {
+      let data = {
         id: this.id,
         pw: this.pw,
         name: this.name,
@@ -191,9 +189,9 @@ export default {
         day: this.day,
         phonenumber: this.phonenumber
       }
-      this.$store.dispatch('signup', form)
-      .then(() => this.$router.push('/login'))
-      .catch(err => console.log(err))
+      this.$store.dispatch('signup', data)
+        .then(() => this.$router.push('/login'))
+        .catch(err => console.log(err))
       },
     // submit () {
     //   this.$http.post('/sign/check', { 

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -60,7 +61,7 @@ export default new Vuex.Store({
       })
     },
 
-    register({commit}, user){
+    signup({commit}, user){
       return new Promise((resolve, reject) => {
         commit('auth_request')
         axios({url: 'http://localhost:3000/register', data: user, method: 'POST' })
@@ -81,7 +82,7 @@ export default new Vuex.Store({
     },
 
     logout({commit}){
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         commit('logout')
         localStorage.removeItem('token')
         delete axios.defaults.headers.common['Authorization']
@@ -91,8 +92,8 @@ export default new Vuex.Store({
   },
 
   getters : {
-	  isLoggedIn: state => !!state.token,
-	  authStatus: state => state.status,
+    isLoggedIn: state => !!state.token,
+    authStatus: state => state.status,
   },
   
   modules: {
