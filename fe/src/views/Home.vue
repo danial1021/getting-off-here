@@ -4,10 +4,10 @@
     <PageTitle :title=title />
     <Nav />
     <div class="imageBox" style="margin-top: 30%">
-      <img src="../assets/BusSearch.png" class="imgMain" @click="$router.push('/searchbus')">
+      <img src="../assets/BusSearch.png" class="imgMain" @click=search_bus>
     </div>
     <div class="imageBox">
-      <img src="../assets/StationSearch.png" class="imgMain" @click="$router.push('/searchstation')">
+      <img src="../assets/StationSearch.png" class="imgMain" @click=search_station>
     </div>
   </div>
 </template>
@@ -26,7 +26,25 @@ export default {
     Bar,
     Nav,
     PageTitle
-  }
+  },
+
+  methods: {
+    search_bus () {
+      if (this.$route.query.fromlogin != '1') {
+        this.$router.push('/login')
+      } else {
+        this.$router.push('/searchbus')
+      }
+    },
+
+    search_station () {
+      if (this.$route.query.fromlogin != '1') {
+        this.$router.push('/login')
+      } else {
+        this.$router.push('/searchstation')
+      }
+    }
+  },
 }
 </script>
 

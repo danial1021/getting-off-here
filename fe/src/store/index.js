@@ -43,6 +43,9 @@ export default new Vuex.Store({
     logout(state){
       state.status = ''
       state.token = ''
+    },
+    validate_event(state){
+      state.status = 'expired'
     }
   },
 
@@ -50,7 +53,7 @@ export default new Vuex.Store({
     login({commit}, user){
       return new Promise((resolve, reject) => {
         commit('auth_request')
-        axios({url: 'login', data: user, method: 'POST' })
+        axios({url: '/login', data: user, method: 'POST' })
         .then(resp => {
           const token = resp.data.token
           const user = resp.data.user
@@ -70,20 +73,21 @@ export default new Vuex.Store({
     signup({commit}, user){
       return new Promise((resolve, reject) => {
         commit('auth_request')
-        axios({url: 'http://localhost:3000/register', data: user, method: 'POST' })
-        .then(resp => {
-          const token = resp.data.token
-          const user = resp.data.user
-          localStorage.setItem('token', token)
-          axios.defaults.headers.common['Authorization'] = token
-          commit('auth_success', token, user)
-          resolve(resp)
-        })
-        .catch(err => {
-          commit('auth_error', err)
-          localStorage.removeItem('token')
-          reject(err)
-        })
+        axios({url: '/register', data: user, method: 'POST' })
+          .then(resp => {
+            const user = resp.data.user
+
+            if (user === {}) {
+              commit('auth_error')
+              reject(resp.data.error)
+            }
+
+            resolve(user)
+          })
+          .catch(err => {
+            commit('auth_error')
+            reject(err)
+          })
       })
     },
 
@@ -94,7 +98,24 @@ export default new Vuex.Store({
         delete axios.defaults.headers.common['Authorization']
         resolve()
       })
-    }
+    },
+
+    validate_event({commit}){
+      return new Promise((resolve, reject) => {
+        commit('validate_event')
+        axios({url: '/token_check', method: 'GET' })
+          .then(resp => {
+            // TO-DO: 토큰 만료가 잘 되었는지 확인하는 로직
+            commit('logout')
+            resolve(resp)
+          })
+          .catch(err => {
+            commit('auth_error')
+            localStorage.removeItem('token')
+            reject(err)
+          })
+      })
+    },
   },
 
   getters : {
