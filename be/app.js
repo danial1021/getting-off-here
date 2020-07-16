@@ -39,7 +39,7 @@ db.once('open', function() {
 });
 
 app.use('/', indexRouter);
-app.use('/api', usersRouter);
+app.use('/api/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://localhost:3000/api'
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Authorization, Content-Type'
 
@@ -53,7 +53,7 @@ export default new Vuex.Store({
     login({commit}, user){
       return new Promise((resolve, reject) => {
         commit('auth_request')
-        axios({url: '/login', data: user, method: 'POST' })
+        axios({url: '/users/login', data: user, method: 'POST' })
         .then(resp => {
           const token = resp.data.token
           const user = resp.data.user
@@ -73,7 +73,7 @@ export default new Vuex.Store({
     signup({commit}, user){
       return new Promise((resolve, reject) => {
         commit('auth_request')
-        axios({url: '/register', data: user, method: 'POST' })
+        axios({url: '/users/register', data: user, method: 'POST' })
           .then(resp => {
             const user = resp.data.user
 
