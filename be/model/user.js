@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 
 // Define Schemes
 const userSchema = new mongoose.Schema({
+  id: { type: String, required: true },
+  pw: { type: String, required: true },
   name: { type: String, required: true },
-  code: { type: Array , required: true }
-},
-{
-  timestamps: true
+  date: { type: String, required: true },
+  phonenum: { type: String, required: true },
 });
 
 // Create Model & Export
