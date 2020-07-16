@@ -181,8 +181,13 @@ export default {
         phonenumber: this.phonenumber
       }
       this.$store.dispatch('signup', data)
-        .then(() => this.$router.push('/login'))
-        .catch(err => console.log(err))
+        .then((r) => {
+          this.$store.commit('pop', { msg: '가입 완료 되었습니다', color: 'success' })
+          this.$router.push('/login')
+        })
+        .catch(e => {
+          if (!e.response) this.$store.commit('pop', { msg: e.message, color: 'warning' })
+        })
       },
     // submit () {
     //   this.$http.post('/sign/check', { 
@@ -204,13 +209,13 @@ export default {
       this.sb.color = cl
     },
     clear () {
-      this.form.id = ''
-      this.form.pw = ''
-      this.form.name = ''
-      this.form.year = ''
-      this.form.month = ''
-      this.form.day = ''
-      this.form.phonenumber = ''
+      this.id = ''
+      this.pw = ''
+      this.name = ''
+      this.year = ''
+      this.month = ''
+      this.day = ''
+      this.phonenumber = ''
     }
   },
 
