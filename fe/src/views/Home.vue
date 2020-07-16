@@ -4,7 +4,7 @@
     <PageTitle :title=title />
     <Nav />
     <div class="imageBox" :class="$mq">
-      <img src="../assets/BusSearch.png" class="imgMain" :class="$mq" @click=search_bus>
+      <img src="../assets/BusSearch.png" id="ImageLeft" class="imgMain" :class="$mq" @click=search_bus>
     </div>
     <div class="imageBox">
       <img src="../assets/StationSearch.png" class="imgMain" :class="$mq" @click=search_station>
@@ -49,6 +49,10 @@ export default {
 </script>
 
 <style>
+#ImageLeft{
+  margin-right: 22px;
+}
+
 .imageBox.mobile{
   margin: 30% 0 12% 0;
 }

@@ -53,7 +53,7 @@
                 <td class="tables">
                   <v-container style="padding: 0; width: 130px">
                    <v-text-field
-                    v-model="day"
+                    v-model="year"
                     :outlined=true
                     :class="$style.days"
                     hint="Birth"
@@ -65,7 +65,7 @@
                 <td class="tables">
                   <v-container style="width: 120px; margin: 0 0 0 0;">
                    <v-text-field
-                    v-model="day"
+                    v-model="month"
                     :outlined=true
                     :class="$style.days"
                     hint="Month"
@@ -99,7 +99,7 @@
               :class="$style.id"
             ></v-text-field>
             <v-btn color="primary" @click="submit" style="margin: 4px;">가 입</v-btn>
-            <v-btn color="secondary" @click="clear">초기화</v-btn>
+            <v-btn color="secondary" @click="clear" style="margin-left: 10px;">초기화</v-btn>
           </v-form>
         </v-col>
       </v-row>
