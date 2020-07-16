@@ -22,6 +22,7 @@
           <v-text-field
             v-model="password"
             label="Password"
+            type="password"
             hint="8자리 이상"
             :outlined=true
             :persistent-hint=true

@@ -52,28 +52,26 @@
               <table>
                 <td class="tables">
                   <v-container style="padding: 0; width: 130px">
-                  <v-overflow-btn
-                  v-model="year"
-                  :items="years"
-                  :outlined=true
-                  hint="YEAR"
-                  :persistent-hint=true
-                  :class="$style.years"
-                  required
-                  ></v-overflow-btn>
+                   <v-text-field
+                    v-model="day"
+                    :outlined=true
+                    :class="$style.days"
+                    hint="Birth"
+                    :persistent-hint=true
+                    required
+                  ></v-text-field>
                   </v-container>
                 </td>
                 <td class="tables">
                   <v-container style="width: 120px; margin: 0 0 0 0;">
-                  <v-overflow-btn
-                  v-model="month"
-                  :items="months"
-                  :outlined=true
-                  hint="MONTH"
-                  :persistent-hint=true
-                  :class="$style.month"
-                  required
-                  ></v-overflow-btn>
+                   <v-text-field
+                    v-model="day"
+                    :outlined=true
+                    :class="$style.days"
+                    hint="Month"
+                    :persistent-hint=true
+                    required
+                  ></v-text-field>
                   </v-container>
                 </td>
                 <td class="tables">
@@ -81,7 +79,7 @@
                     v-model="day"
                     :outlined=true
                     :class="$style.days"
-                    hint="DAY"
+                    hint="Day"
                     :persistent-hint=true
                     required
                   ></v-text-field>
@@ -133,9 +131,6 @@ export default {
   
   data: () => ({
     title: '회원가입',
-
-    years: ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008' ,'2009', '2010'],
-    months: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
 
     id: '',
     pw: '',
