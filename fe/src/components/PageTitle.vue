@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-layout row wrap>
+        <v-layout>
             <v-flex sm4>
                <v-btn 
                 icon
