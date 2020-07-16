@@ -1,7 +1,6 @@
 <template>
   <v-navigation-drawer v-model="$store.state.drawer" absolute temporary>
     <v-list>
-      <v-list-item avatar>
         <v-list-item-avatar>
           <v-avatar>
             <img
@@ -13,7 +12,6 @@
         <v-list-item-content>
           <v-list-item-title>{{ message }}</v-list-item-title>
         </v-list-item-content>
-      </v-list-item>
       <v-divider></v-divider>
       <v-list-group
         v-for="(item, i) in items"
