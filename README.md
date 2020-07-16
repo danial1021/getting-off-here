@@ -13,3 +13,10 @@ repository에 대해 더 좋은 방향으로 나아갈 수 있다면 언제든�
 
 <img src="https://vuejs.org/images/logo.png" width="225" height="225" />
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" width="200" height="120" />
+
+## 세팅 방법
+
+.env 파일을 be폴더 바로 아래에 추가하고  
+MONGO_URI = (몽고디비URL/DB이름)
+JWT_SECRET = (jwt key)  
+이렇게 값을 넣어주시면 됩니다.

@@ -11,7 +11,7 @@ router.post('/login', function(req, res, next) { //아이디 비밀번호 받음
       id : user[0].id,
       name : user[0].name,
     }, process.env.JWT_SECRET, {
-      expiresIn: '7d', // 일주일
+      expiresIn: '10m', // 일주일
       issuer: 'getting-off-here',  //발급자
     });
     console.log(token)
