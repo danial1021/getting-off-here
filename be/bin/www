@@ -17,25 +17,25 @@ let fs = require('fs');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-var options ={
-  key: fs.readFileSync('bin/keys/private.pem'),
-  cert: fs.readFileSync('bin/keys/public.pem')
-}
+// var options ={
+//   key: fs.readFileSync('bin/keys/private.pem'),
+//   cert: fs.readFileSync('bin/keys/public.pem')
+// }
 
 /**
  * Create HTTP server.
  */
 
 var server = http.createServer(app);
-var https_server = https.createServer(options, app)
+//var https_server = https.createServer(options, app)
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-https_server.listen('8081', ()=>{
-  console.log('https start');
-});
+// https_server.listen('8081', ()=>{
+//   console.log('https start');
+// });
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
