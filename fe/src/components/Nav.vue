@@ -1,17 +1,19 @@
 <template>
   <v-navigation-drawer v-model="$store.state.drawer" absolute temporary>
     <v-list>
-        <v-list-item-avatar>
-          <v-avatar>
-            <img
-              src="https://cdn.vuetifyjs.com/images/john.jpg"
-              alt="John"
-            >
-          </v-avatar>
-        </v-list-item-avatar>
-        <v-list-item-content>
-          <v-list-item-title>{{ message }}</v-list-item-title>
-        </v-list-item-content>
+      <div style="margin-left: 20px;"> <!-- 사진과 이미지같이 같이 있는 항목은 div와 같은 공태그로 묶어주세요.-->
+          <v-list-item-avatar>
+            <v-avatar>
+              <img
+                src="https://cdn.vuetifyjs.com/images/john.jpg"
+                alt="John"
+              >
+            </v-avatar>
+          </v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title>{{ message }}</v-list-item-title>
+          </v-list-item-content>
+        </div>
       <v-divider></v-divider>
       <v-list-group
         v-for="(item, i) in items"

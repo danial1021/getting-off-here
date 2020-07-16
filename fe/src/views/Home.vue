@@ -3,11 +3,11 @@
     <Bar />
     <PageTitle :title=title />
     <Nav />
-    <div class="imageBox" style="margin-top: 30%">
-      <img src="../assets/BusSearch.png" class="imgMain" @click=search_bus>
+    <div class="imageBox" :class="$mq">
+      <img src="../assets/BusSearch.png" class="imgMain" :class="$mq" @click=search_bus>
     </div>
     <div class="imageBox">
-      <img src="../assets/StationSearch.png" class="imgMain" @click=search_station>
+      <img src="../assets/StationSearch.png" class="imgMain" :class="$mq" @click=search_station>
     </div>
   </div>
 </template>
@@ -49,11 +49,24 @@ export default {
 </script>
 
 <style>
+.imageBox.mobile{
+  margin: 30% 0 12% 0;
+}
+
+.imageBox.desktop{
+  margin: 10% 0 4% 0;
+}
+
 .imageBox{
   text-align: center;
-  margin-bottom: 12%;
 }
-.imgMain{
+
+.imgMain.mobile{
   width: 70%;
 }
+
+.imgMain.desktop{
+  width: 30%;
+}
+
 </style>
