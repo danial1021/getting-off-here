@@ -6,13 +6,13 @@ module.exports = {
   ],
   outputDir : path.resolve(__dirname, "../be/public/"),
   devServer: { 
-        proxy: { // proxyTable 설정 
-        '/': { 
-            target: 'http://localhost:8081/', 
-            changeOrigin: true
-            } 
-        } 
-    },
+    proxy: { // proxyTable 설정 
+      '/api/*': {
+        target: 'http://localhost:3000/', 
+        changeOrigin: true
+      }
+    } 
+  },
   pwa: {
     name: 'GOH',
     themeColor: '#0f4c81',
@@ -34,12 +34,12 @@ module.exports = {
       "display": "standalone",
       // "background_color": "#0f4c81"
     },
-    iconPaths: {
-      favicon32: 'img/icons/favicon-32x32.png',
-      favicon16: 'img/icons/favicon-16x16.png',
-      appleTouchIcon: 'img/icons/apple-touch-icon-152x152.png',
-      maskIcon: 'img/icons/safari-pinned-tab.svg',
-      msTileImage: 'img/icons/msapplication-icon-144x144.png'
-    }
+    // iconPaths: {
+    //   favicon32: 'img/icons/favicon-32x32.png',
+    //   favicon16: 'img/icons/favicon-16x16.png',
+    //   appleTouchIcon: 'img/icons/apple-touch-icon-152x152.png',
+    //   maskIcon: 'img/icons/safari-pinned-tab.svg',
+    //   msTileImage: 'img/icons/msapplication-icon-144x144.png'
+    // }
   }
 }
