@@ -1,22 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '../store'
+// import store from '../store'
 
-const ifNotAuthenticated = (to, from, next) => {
-  if (!store.getters.isAuthenticated) {
-    next()
-    return
-  }
-  next('/')
-}
+// const ifNotAuthenticated = (to, from, next) => {
+//   if (!store.getters.isAuthenticated) {
+//     next()
+//     return
+//   }
+//   next('/')
+// }
 
-const ifAuthenticated = (to, from, next) => {
-  if (store.getters.isAuthenticated) {
-    next()
-    return
-  }
-  next('/login')
-}
+// const ifAuthenticated = (to, from, next) => {
+//   if (store.getters.isAuthenticated) {
+//     next()
+//     return
+//   }
+//   next('/login')
+// }
 
 Vue.use(VueRouter)
 
@@ -25,7 +25,7 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: () => import('../views/Home.vue'),
-    beforeEnter: ifNotAuthenticated
+    // beforeEnter: ifNotAuthenticated
     // nested route
     // children: [
     //   {
@@ -44,25 +44,31 @@ Vue.use(VueRouter)
     path: '/login',
     name: 'Login',
     component: () => import('../views/Login.vue'),
-    beforeEnter: ifNotAuthenticated
+    // beforeEnter: ifNotAuthenticated
   },
   {
     path: '/signup',
     name: 'SignUp',
     component: () => import('../views/SignUp.vue'),
-    beforeEnter: ifNotAuthenticated
+    // beforeEnter: ifNotAuthenticated
   },
   {
     path: '/searchbus',
     name: 'SearchBus',
     component: () => import('../views/SearchBus.vue'),
-    beforeEnter: ifAuthenticated
+    // beforeEnter: ifAuthenticated
   },
   {
     path: '/searchstation',
     name: 'SearchStation',
     component: () => import('../views/SearchStation.vue'),
-    beforeEnter: ifAuthenticated
+    // beforeEnter: ifAuthenticated
+  },
+  {
+    path: '/using',
+    name: 'Using',
+    component: () => import('../views/Using.vue'),
+    // beforeEnter: ifNotAuthenticated
   }
 ]
 

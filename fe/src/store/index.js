@@ -11,28 +11,19 @@ axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Authorization, 
 export default new Vuex.Store({
   state: { // state는 변수를 의미
     drawer: false,
-    sb: {
-      act: false,
-      msg: '',
-      color: 'error'
-    },
     status: '',
     token: localStorage.getItem('token') || '',
     user : {}
   },
 
   mutations: { // mutations는 변수를 조작하는 함수를 의미
-    pop (state, d) {
-      state.sb.msg = d.msg
-      state.sb.color = d.color
-      state.sb.act = false
-      if (d.act === undefined) state.sb.act = true
-    },
+    // Mutations accept only two parameters: first - state, second - payload.
+    // If you want to pass multiple parameters in payload use an object.
 
     auth_request(state){
       state.status = 'loading'
     },
-    auth_success(state, token, user){
+    auth_success(state, {token, user}){
       state.status = 'success'
       state.token = token
       state.user = user
@@ -57,9 +48,11 @@ export default new Vuex.Store({
         .then(resp => {
           const token = resp.data.token
           const user = resp.data.user
+          console.log(user.id)
+          console.log(user.name)
           localStorage.setItem('token', token)
           axios.defaults.headers.common['Authorization'] = token
-          commit('auth_success', token, user)
+          commit('auth_success', {token, user})
           resolve(resp)
         })
         .catch(err => {

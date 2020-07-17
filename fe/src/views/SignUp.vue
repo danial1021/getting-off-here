@@ -2,7 +2,7 @@
   <div>
     <Bar />
     <PageTitle :title=title />
-    
+    <Nav />
     <v-container fluid>
       <v-row>
        <v-col cols="12" sm="6"></v-col>
@@ -104,19 +104,6 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-snackbar
-      v-model="sb.act"
-    >
-      {{ sb.msg }}
-      <v-btn
-        :color="sb.color"
-        text
-        @click="sb.act = false"
-      >
-        닫기
-      </v-btn>
-    </v-snackbar>
-    <Nav />
   </div>
 </template>
 
@@ -139,12 +126,6 @@ export default {
     month: '',
     day: '',
     phonenumber: '',
-
-    sb: {
-      act: false,
-      msg: '',
-      color: 'warning'
-    },
 
     // option: :rules="phoneRules"
     // phoneRules: [
@@ -181,33 +162,13 @@ export default {
         phonenumber: this.phonenumber
       }
       this.$store.dispatch('signup', data)
-        .then((r) => {
-          this.$store.commit('pop', { msg: '가입 완료 되었습니다', color: 'success' })
+        .then(() => {
+          // snackbar
           this.$router.push('/login')
         })
-        .catch(e => {
-          if (!e.response) this.$store.commit('pop', { msg: e.message, color: 'warning' })
-        })
+        .catch(err => console.log(err))
       },
-    // submit () {
-    //   this.$http.post('/sign/check', { 
-    //     form: this.form
-    //   })
-    //   .then((res) => {
-    //     if (res.data.success == true) {
-    //       this.$store.commit('pop', { msg: '가입 완료 되었습니다', color: 'success' })
-    //       this.$router.push('/login') 
-    //     }
-    //   })
-    //   .catch(e => {
-    //     if(!e.res) this.$store.commit('pop', { msg: e.message, color: 'warning' })
-    //   })
-    // },
-    pop (m, cl) {
-      this.sb.act = true
-      this.sb.msg = m
-      this.sb.color = cl
-    },
+
     clear () {
       this.id = ''
       this.pw = ''
