@@ -1,22 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import store from '../store'
+import store from '../store'
 
-// const ifNotAuthenticated = (to, from, next) => {
-//   if (!store.getters.isAuthenticated) {
-//     next()
-//     return
-//   }
-//   next('/')
-// }
-
-// const ifAuthenticated = (to, from, next) => {
-//   if (store.getters.isAuthenticated) {
-//     next()
-//     return
-//   }
-//   next('/login')
-// }
+const requireAuth = (to, from, next) => {
+  console.log(store.getters.isAuthenticated)
+  if (store.getters.isAuthenticated) return next()
+  else next('/login')
+}
 
 Vue.use(VueRouter)
 
@@ -43,32 +33,29 @@ Vue.use(VueRouter)
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login.vue'),
-    // beforeEnter: ifNotAuthenticated
+    component: () => import('../views/Login.vue')
   },
   {
     path: '/signup',
     name: 'SignUp',
-    component: () => import('../views/SignUp.vue'),
-    // beforeEnter: ifNotAuthenticated
+    component: () => import('../views/SignUp.vue')
   },
   {
     path: '/searchbus',
     name: 'SearchBus',
     component: () => import('../views/SearchBus.vue'),
-    // beforeEnter: ifAuthenticated
+    beforeEnter: requireAuth
   },
   {
     path: '/searchstation',
     name: 'SearchStation',
     component: () => import('../views/SearchStation.vue'),
-    // beforeEnter: ifAuthenticated
+    beforeEnter: requireAuth
   },
   {
     path: '/using',
     name: 'Using',
-    component: () => import('../views/Using.vue'),
-    // beforeEnter: ifNotAuthenticated
+    component: () => import('../views/Using.vue')
   }
 ]
 
