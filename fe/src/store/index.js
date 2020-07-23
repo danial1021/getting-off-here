@@ -8,6 +8,18 @@ axios.defaults.baseURL = 'http://localhost:3000/api'
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Authorization, Content-Type'
 
+const checkToken = (token) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      try {
+        resolve(axios.get(`/api/token/check?accessToken=${token}`))
+      } catch (err) {
+        reject(new Error(err))
+      }
+    }, 1000)
+  })
+}
+
 export default new Vuex.Store({
   state: { // state는 변수를 의미
     drawer: false,
@@ -98,7 +110,8 @@ export default new Vuex.Store({
     validate_event({commit}){
       return new Promise((resolve, reject) => {
         commit('validate_event')
-        axios({url: '/token_check', method: 'GET' })
+        // axios({url: '/token_check', method: 'GET' })
+        checkToken(state.token)
           .then(resp => {
             // TO-DO: 토큰 만료가 잘 되었는지 확인하는 로직
             commit('logout')
