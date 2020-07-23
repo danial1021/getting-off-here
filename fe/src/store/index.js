@@ -48,6 +48,7 @@ export default new Vuex.Store({
     logout(state){
       state.status = ''
       state.token = ''
+      state.user = {name:"비로그인"}
     },
     validate_event(state){
       state.status = 'expired'
