@@ -13,7 +13,9 @@ export default new Vuex.Store({
     drawer: false,
     status: '',
     token: localStorage.getItem('token') || '',
-    user : {}
+    user : {
+      name: "비로그인"
+    }
   },
 
   mutations: { // mutations는 변수를 조작하는 함수를 의미
