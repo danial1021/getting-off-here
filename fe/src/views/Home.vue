@@ -50,7 +50,7 @@ export default {
 
 <style>
 #ImageLeft{
-  margin-right: 22px;
+  margin-right: 18px;
 }
 
 .imageBox.mobile{
