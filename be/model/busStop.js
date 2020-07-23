@@ -4,9 +4,6 @@ const mongoose = require('mongoose');
 const busStopSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
   code: { type: Array , required: true }
-},
-{
-  timestamps: true
 });
 
 // Create Model & Export
