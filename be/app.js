@@ -12,6 +12,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var busRouter = require('./routes/bus');
 var busStopRouter = require('./routes/busStop');
+var tokenRouter = require('./routes/token')
 
 var app = express();
 
@@ -44,6 +45,7 @@ app.use('/', indexRouter);
 app.use('/api/users', usersRouter); //유저 관련 api
 app.use('/api/bus', busRouter); //버스 관련 api
 app.use('/api/busStop', busStopRouter); //정류장 관련 api
+app.use('/api/token', tokenRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
