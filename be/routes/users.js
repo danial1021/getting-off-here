@@ -35,7 +35,7 @@ router.post('/register', function(req, res, next) { //회원가입정보 보내�
   })
 });
 
-router.post("/login/id-check", (req, res, next)=>{  //아이디 중복 확인
+router.get("/login/id-check", (req, res, next)=>{  //아이디 중복 확인
   const u = req.body;
   User.findOne({id : u.id}) //이친구는 일단 무조건 
     .then((user)=>{
