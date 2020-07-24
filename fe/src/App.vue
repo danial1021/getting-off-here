@@ -21,6 +21,11 @@ export default {
       setTimeout(() => {
           this.loading = false
       }, 3000)
-  }
+  },
+  mounted() {
+    // this.$store.dispatch('validate_event')
+    //   .then(() => this.$router.push('/login'))
+    //   .catch(err => console.log(err))
+  },
 }
 </script>

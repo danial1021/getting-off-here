@@ -48,7 +48,9 @@ export default new Vuex.Store({
     logout(state){
       state.status = ''
       state.token = ''
-      state.user = {name:"비로그인"}
+      state.user = {
+        name:"비로그인"
+      }
     },
     validate_event(state){
       state.status = 'expired'
@@ -112,7 +114,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit('validate_event')
         // axios({url: '/token_check', method: 'GET' })
-        checkToken(state.token)
+        checkToken(state.user.token)
           .then(resp => {
             // TO-DO: 토큰 만료가 잘 되었는지 확인하는 로직
             commit('logout')

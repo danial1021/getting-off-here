@@ -10,94 +10,127 @@
         <v-col cols="12" md="6"></v-col>
         <v-col cols="12" md="6" :class="$style.mainform">
           <v-form>
-            <v-text-field
-              v-model="id"
-              label="ID"
-              :outlined=true
-              hint="영문 숫자 혼용"
-              :persistent-hint=true
-              :counter="30"
-              :class="$style.id"
-              required
-            ></v-text-field>
-            <v-btn color="success">아이디 중복</v-btn>
-            <br>
-            <br>
-            <v-text-field
-              v-model="pw"
-              label="Password"
-              hint="8자리 이상"
-              type="password"
-              :outlined=true
-              :persistent-hint=true
-              :counter="30"
-              :rules="passwordrules"
-              :class="$style.id"
-              required
-            ></v-text-field>
+            <validation-provider name="ID" rules="minmax:4,20|alpha_num|required" v-slot="{ errors }">
+              <!-- 문자 및 숫자로 입력 필수, 4~20자리까지 입력 필수 -->
+              <v-text-field
+                v-model="id"
+                :outlined=true
+                :class="$style.id"
+                label="ID"
+                hint="4자리 이상&& 영문 숫자 혼용"
+                :error-messages="errors[0]"
+                :persistent-hint=true   
+                :counter="20"
+                required
+              ></v-text-field>
+            </validation-provider>
 
-            <v-text-field
-              v-model="name"
-              label="이름"
-              hint="ex) 홍길동"
-              :outlined=true
-              :persistent-hint=true
-              :counter="30"
-              :class="$style.id"
-              required
-            ></v-text-field>
+            <v-btn color="success">아이디 중복</v-btn>
+
+            <br>
+            <br>
+
+            <validation-provider name="PASSWORD" rules="alpha_num|minmax:8,30|required" v-slot="{ errors }">
+              <!-- 문자 및 숫자로 입력 필수, 8~30자리까지 입력 필수 -->
+              <v-text-field
+                v-model="pw"
+                label="Password"
+                hint="8자리 이상 && 문자 및 숫자"
+                type="password"
+                :error-messages="errors[0]"
+                :outlined=true
+                :persistent-hint=true
+                :counter="30"
+                :class="$style.id"
+                required
+              ></v-text-field>
+            </validation-provider>
+
+            <validation-provider name="NAME" rules="minmax:1,10|required" v-slot="{ errors }">
+              <!-- 1~10자리까지 입력 필수-->
+              <v-text-field
+                v-model="name"
+                label="이름"
+                hint="ex) 홍길동"
+                :outlined=true
+                :persistent-hint=true
+                :error-messages="errors[0]"
+                :counter="10"
+                :class="$style.id"
+                required
+              ></v-text-field>
+            </validation-provider>
 
             <br>
             <section class="birth">
               <table>
                 <td class="tables">
                   <v-container style="padding: 0; width: 130px">
-                   <v-text-field
-                    v-model="year"
-                    :outlined=true
-                    :class="$style.days"
-                    hint="Birth"
-                    :persistent-hint=true
-                    required
-                  ></v-text-field>
+                    <validation-provider name="BIRTH" rules="between:1900,2010|digits:4|required" v-slot="{ errors }">
+                      <!-- 1900부터 2010까지 사이로 입력 필수, 숫자만으로 4자리 입력 필수 -->
+                      <v-text-field
+                        v-model="year"
+                        :outlined=true
+                        :class="$style.days"
+                        hint="1900~2010년생"
+                        label="출생년도"
+                        :persistent-hint=true
+                        :error-messages="errors[0]"
+                        required
+                      ></v-text-field>
+                    </validation-provider>
                   </v-container>
                 </td>
                 <td class="tables">
                   <v-container style="width: 120px; margin: 0 0 0 0;">
-                   <v-text-field
-                    v-model="month"
-                    :outlined=true
-                    :class="$style.days"
-                    hint="Month"
-                    :persistent-hint=true
-                    required
-                  ></v-text-field>
+                   <validation-provider name="MONTH" rules="between:1,12|required" v-slot="{ errors }">
+                     <!-- 1부터 12까지 사이로 입력 필수 -->
+                     <v-text-field
+                      v-model="month"
+                      :outlined=true
+                      :class="$style.days"
+                      hint="1~12월"
+                      label="월"
+                      :persistent-hint=true
+                      :error-messages="errors[0]"
+                      required
+                    ></v-text-field>
+                   </validation-provider>
                   </v-container>
                 </td>
                 <td class="tables">
-                  <v-text-field
-                    v-model="day"
-                    :outlined=true
-                    :class="$style.days"
-                    hint="Day"
-                    :persistent-hint=true
-                    required
-                  ></v-text-field>
+                  <validation-provider name="DAY" rules="between:1,31|required" v-slot="{ errors }">
+                    <!-- 1부터 31까지 사이로 입력 필수 -->
+                    <v-text-field
+                      v-model="day"
+                      :outlined=true
+                      :class="$style.days"
+                      hint="1일~31일"
+                      label="일"
+                      :persistent-hint=true
+                      :error-messages="errors[0]"
+                      required
+                    ></v-text-field>
+                  </validation-provider>
                 </td>
               </table>
 
             </section>
             <br>
             
-            <v-text-field
-              v-model="phonenumber"
-              label="Phone number"
-              hint="휴대전화"
-              :outlined=true
-              :persistent-hint=true
-              required
-              :class="$style.id"
-            ></v-text-field>
+            <validation-provider name="PHONENUMBER" rules="digits:11|required" v-slot="{ errors }">
+              <!-- 숫자로만 11자리 입력 필수 -->
+              <v-text-field
+                v-model="phonenumber"
+                label="Phone number"
+                hint="휴대전화 11자리"
+                :outlined=true
+                :persistent-hint=true
+                :error-messages="errors[0]"
+                required
+                :class="$style.id"
+              ></v-text-field>
+            </validation-provider>
             <v-btn color="primary" @click="submit" style="margin: 4px;">가 입</v-btn>
             <v-btn color="secondary" @click="clear" style="margin-left: 10px;">초기화</v-btn>
           </v-form>
@@ -112,6 +145,24 @@
 import Bar from '@/components/Bar.vue'
 import Nav from '@/components/Nav.vue'
 import PageTitle from '@/components/PageTitle.vue'
+import { ValidationProvider } from 'vee-validate';
+import { extend } from 'vee-validate';
+import { required, alpha_num, between, digits, length } from 'vee-validate/dist/rules';
+
+extend('alpha_num', alpha_num);
+extend('between',between);
+extend('digits', digits);
+extend('length', length);
+extend('required', {
+  ...required,
+  message: 'This field is required'
+});
+extend('minmax', {
+  validate(value, { min, max }) {
+    return value.length >= min && value.length <= max;
+  },
+  params: ['min', 'max']
+});
 
 export default {
   name: 'SignUp',
@@ -126,28 +177,7 @@ export default {
     month: '',
     day: '',
     phonenumber: '',
-
-    // option: :rules="phoneRules"
-    // phoneRules: [
-    //     v => !!v || '휴대폰 번호를 입력해주세요.',
-    //     v => /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/.test(v) || '휴대폰 번호를 입력해주세요.',
-    //   ],
   }),
-
-  computed:{
-    passwordrules() {
-
-      const rules = []
-
-        if (!this.allowSpaces) {
-          const rule =
-            v => (v || '').indexOf(' ') < 0 ||
-              '띄어쓰기는 사용할수 없습니다.'
-          rules.push(rule)
-        }
-        return rules
-    }
-  },
   
   methods: {
     
@@ -183,7 +213,8 @@ export default {
   components: {
     Bar,
     Nav,
-    PageTitle
+    PageTitle,
+    ValidationProvider
   }
 }
 </script>
