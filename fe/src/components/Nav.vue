@@ -189,7 +189,7 @@ export default {
         return this.$store.getters.isAuthenticated
     },
     meminfo () {
-      this.$router.push("/using").catch((e)=>{console.log(e)});
+      this.$router.push("/meminfo").catch((e)=>{console.log(e)});
     },
     reservation () {
       this.$router.push("/reservation").catch((e)=>{console.log(e)});

@@ -17,7 +17,7 @@
                 :outlined=true
                 :class="$style.id"
                 label="ID"
-                hint="4자리 이상&& 영문 숫자 혼용"
+                hint="4자리 이상 && 영문 숫자 혼용"
                 :error-messages="errors[0]"
                 :persistent-hint=true   
                 :counter="20"
@@ -25,7 +25,7 @@
               ></v-text-field>
             </validation-provider>
 
-            <v-btn color="success">아이디 중복</v-btn>
+            <v-btn color="success" @click="id_check">아이디 중복</v-btn>
 
             <br>
             <br>
@@ -137,6 +137,13 @@
         </v-col>
       </v-row>
     </v-container>
+
+    <v-snackbar v-model="snackbar">
+      {{ sbMsg }}
+      <v-btn color="pink" text @click="snackbar = false">
+        닫기
+      </v-btn>
+    </v-snackbar>
   </div>
 </template>
 
@@ -145,9 +152,9 @@
 import Bar from '@/components/Bar.vue'
 import Nav from '@/components/Nav.vue'
 import PageTitle from '@/components/PageTitle.vue'
-import { ValidationProvider } from 'vee-validate';
-import { extend } from 'vee-validate';
-import { required, alpha_num, between, digits, length } from 'vee-validate/dist/rules';
+import { ValidationProvider } from 'vee-validate'
+import { extend } from 'vee-validate'
+import { required, alpha_num, between, digits, length } from 'vee-validate/dist/rules'
 
 extend('alpha_num', alpha_num);
 extend('between',between);
@@ -177,6 +184,9 @@ export default {
     month: '',
     day: '',
     phonenumber: '',
+
+    snackbar: false,
+    sbMsg: ''
   }),
   
   methods: {
@@ -193,11 +203,20 @@ export default {
       }
       this.$store.dispatch('signup', data)
         .then(() => {
-          // snackbar
+          this.pop("회원가입 완료")
           this.$router.push('/login')
         })
         .catch(err => console.log(err))
       },
+
+    id_check () {
+      this.$http.get('/users/login/id-check',{
+        id: this.id
+      }).then((resp) => {
+        if(resp.data.isok) this.pop("아이디를 사용할 수 있습니다")
+        else this.pop("아이디가 중복되었습니다")
+      })
+    },
 
     clear () {
       this.id = ''
@@ -207,6 +226,11 @@ export default {
       this.month = ''
       this.day = ''
       this.phonenumber = ''
+    },
+
+    pop (msg) {
+      this.snackbar = true
+      this.sbMsg = msg
     }
   },
 
