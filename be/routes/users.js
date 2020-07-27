@@ -40,7 +40,7 @@ router.get("/login/id-check", (req, res, next)=>{  //아이디 중복 확인
   User.findOne({id : u.id}) //이친구는 일단 무조건 
     .then((user)=>{
       if(user == {}) return res.send({ isok : true });  //아이디 중복 없으면 isok에 true를 보냄
-      res.status(400).send({isok:false}); //아이디 중복이 확인 되면 isok에 false를 보냄
+      res.send({isok:false}); //아이디 중복이 확인 되면 isok에 false를 보냄
     })
     .catch((e) => {
       res.send({ isok: false, msg: e.message })
