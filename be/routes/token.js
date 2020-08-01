@@ -2,10 +2,9 @@ var express = require('express');
 var path = require("path")
 var router = express.Router();
 
-/* GET home page. */
-router.get('/check', function(req, res, next) {
+router.post('/check', function(req, res, next) {
     const token = req.headers['x-access-token'] || req.query.token;
-    let jwt_secret = 'DinnerKang';
+    let jwt_secret = process.env.JWT_SECRET;
 
     if (!token) {
         res.status(400).json({
