@@ -5,8 +5,8 @@ import json
 
 client = pymongo.MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=false')
 db = client.GOH
-collection1 = db.bus
-collection2 = db.busline
+collection1 = db.buses
+collection2 = db.buslines
 
 line = collection1.find()
 for i in line:
@@ -21,8 +21,10 @@ for i in line:
             except:
                 busline[str(j.find('busstop_name').text).replace(".", "")]="9999"+"/"+str(j.find('busstop_id').text)
         result={
-            line : busline,
+            'lines' : {
+                line: busline
+            }
         }
-        collection2.insert_one(result)
+        collection2.insert_one(result)    
     except:
         pass
