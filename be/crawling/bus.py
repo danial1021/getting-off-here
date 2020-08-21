@@ -4,7 +4,7 @@ import requests
 import json
 client = pymongo.MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=false')
 db = client.GOH
-collection = db.bus
+collection = db.buses
 
 soup = BeautifulSoup(requests.get("http://api.gwangju.go.kr/xml/lineInfo?serviceKey=tEA2cLH8Amh%2FxeavdbPj1Kz0%2FL4bC6eYyo%2BbF2V8A28VE7%2FFl%2F%2Fsyd9OnPL03g40YafaSbb7rYYPqYs0vhd49A%3D%3D&").text, 'lxml')
 lists = soup.find_all('line')

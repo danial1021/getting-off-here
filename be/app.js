@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('jwt-secret', process.env.JWT_SECRET)
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
 // 3. 연결된 testDB 사용
 var db = mongoose.connection;
 // 4. 연결 실패
