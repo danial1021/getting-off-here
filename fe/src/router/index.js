@@ -10,8 +10,11 @@ const requireAuth = (to, from, next) => {
     console.log(token_val)
     if(token_val) return next()
     else {
-      store.getters.isAuthenticated = false
-      next('/login')
+      store.dispatch('logout')
+      .then(() => {
+        next('/login')
+      })
+      
       console.log(store.getters.isAuthenticated)
     }
   })

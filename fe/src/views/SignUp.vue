@@ -5,7 +5,7 @@
     <Nav />
     <v-container fluid>
       <v-row>
-       <v-col cols="12" sm="6"></v-col>
+        <v-col cols="12" sm="6"></v-col>
         <v-col cols="12"></v-col>
         <v-col cols="12" md="6"></v-col>
         <v-col cols="12" md="6" :class="$style.mainform">
@@ -83,9 +83,9 @@
                 </td>
                 <td class="tables">
                   <v-container style="width: 120px; margin: 0 0 0 0;">
-                   <validation-provider name="MONTH" rules="between:1,12|required" v-slot="{ errors }">
-                     <!-- 1부터 12까지 사이로 입력 필수 -->
-                     <v-text-field
+                  <validation-provider name="MONTH" rules="between:1,12|required" v-slot="{ errors }">
+                    <!-- 1부터 12까지 사이로 입력 필수 -->
+                    <v-text-field
                       v-model="month"
                       :outlined=true
                       :class="$style.days"
@@ -95,7 +95,7 @@
                       :error-messages="errors[0]"
                       required
                     ></v-text-field>
-                   </validation-provider>
+                  </validation-provider>
                   </v-container>
                 </td>
                 <td class="tables">
@@ -184,6 +184,7 @@ export default {
     month: '',
     day: '',
     phonenumber: '',
+    check_flag: false,
 
     snackbar: false,
     sbMsg: ''
@@ -192,28 +193,35 @@ export default {
   methods: {
     
     submit () {
-      let data = {
-        id: this.id,
-        pw: this.pw,
-        name: this.name,
-        year: this.year,
-        month: this.month,
-        day: this.day,
-        phonenumber: this.phonenumber
+      if(this.check_flag){
+        let data = {
+          id: this.id,
+          pw: this.pw,
+          name: this.name,
+          year: this.year,
+          month: this.month,
+          day: this.day,
+          phonenumber: this.phonenumber
+        }
+        this.$store.dispatch('signup', data)
+          .then(() => {
+            this.pop("회원가입 완료")
+            this.$router.push('/login')
+          })
+          .catch(err => console.log(err))
+      }else {
+        this.pop("id 중복체크을 해주세요")
       }
-      this.$store.dispatch('signup', data)
-        .then(() => {
-          this.pop("회원가입 완료")
-          this.$router.push('/login')
-        })
-        .catch(err => console.log(err))
-      },
+    },
 
     id_check () {
       this.$http.get('/users/login/id-check',{params: {
         id: this.id
       }}).then((resp) => {
-        if(resp.data.isok) this.pop("아이디를 사용할 수 있습니다")
+        if(resp.data.isok) {
+          this.check_flagcheck_flag = true
+          this.pop("아이디를 사용할 수 있습니다")
+        }
         else this.pop("아이디가 중복되었습니다")
       })
     },
@@ -262,6 +270,6 @@ export default {
 a{
   color: gray;
   text-decoration: none;
-  }
+}
 
 </style>

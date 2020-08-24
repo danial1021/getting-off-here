@@ -15,8 +15,10 @@ export default {
     name: 'Using',
     data: () => ({
         title: '사용방법',
-
     }),
+
+    methods: {
+    },
 
     components: {
         Bar,
