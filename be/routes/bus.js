@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) { //버스 목록 조회(검색할때 ?
     Bus.find()
     .then((bus)=>{
         for(var i =0;i<bus.length;i++){
-            if(bus[i].lineName[0].includes(req.params.busname)){
+            if(bus[i].lineName[0].includes(req.query.busname)){
                 buses.push(bus[i])
             }
         }
