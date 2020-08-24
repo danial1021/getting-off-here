@@ -1,11 +1,23 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
+import axios from 'axios'
 
 const requireAuth = (to, from, next) => {
-  console.log(store.getters.isAuthenticated)
-  if (store.getters.isAuthenticated) return next()
-  else next('/login')
+  axios.post('/token/check', { token: store.token })
+  .then(resp => {
+    const token_val = resp.data.success
+    console.log(token_val)
+    if(token_val) return next()
+    else {
+      store.getters.isAuthenticated = false
+      next('/login')
+      console.log(store.getters.isAuthenticated)
+    }
+  })
+  .catch(err => {
+    console.log(err.message)
+  })
 }
 
 Vue.use(VueRouter)

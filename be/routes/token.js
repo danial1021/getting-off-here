@@ -16,8 +16,9 @@ router.post('/check', function(req, res, next) {
     const checkToken = new Promise((resolve, reject) => {
         jwt.verify(token, jwt_secret, function (err, decoded) {
         if (err) reject(err)
+        .catch()
         resolve(decoded);
-        });
+        })
     });
 
     checkToken.then(
