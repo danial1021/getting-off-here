@@ -3,7 +3,7 @@ var path = require("path")
 var router = express.Router();
 
 router.post('/check', function(req, res, next) {
-    const token = req.headers['x-access-token'] || req.query.token;
+    const token = req.body.token;
     let jwt_secret = process.env.JWT_SECRET;
 
     if (!token) {
