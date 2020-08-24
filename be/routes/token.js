@@ -14,7 +14,7 @@ router.post('/check', function(req, res, next) {
     }
     const checkToken = new Promise((resolve, reject) => {
         jwt.verify(token, jwt_secret, function (err, decoded) {
-        if (err) reject(err);
+        if (err) res.send({success:false})
         resolve(decoded);
         });
     });
@@ -22,11 +22,7 @@ router.post('/check', function(req, res, next) {
     checkToken.then(
         token => {
         console.log(token);
-        res.status(200).json({
-            'status': 200,
-            'msg': 'success',
-            token
-        });
+        res.send({success:true})
     })
 });
 
