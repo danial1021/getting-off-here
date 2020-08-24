@@ -210,9 +210,9 @@ export default {
       },
 
     id_check () {
-      this.$http.get('/users/login/id-check',{
+      this.$http.get('/users/login/id-check',{params: {
         id: this.id
-      }).then((resp) => {
+      }}).then((resp) => {
         if(resp.data.isok) this.pop("아이디를 사용할 수 있습니다")
         else this.pop("아이디가 중복되었습니다")
       })
