@@ -7,17 +7,12 @@ router.get('/', function(req, res, next) { //버스 목록 조회(검색할때 ?
     var buses = [];
     Bus.find()
     .then((bus)=>{
-        if(req.params.busname != undefined){
-            for(var i =0;i<bus.length;i++){
-                if(bus[i].lineName[0].includes(req.params.busname)){
-                    buses.push(bus[i])
-                }
+        for(var i =0;i<bus.length;i++){
+            if(bus[i].lineName[0].includes(req.params.busname)){
+                buses.push(bus[i])
             }
-            res.send(bus)
         }
-        else{
-            res.send(bus)
-        }
+        res.send(bus:buses)
     })
 });
 
