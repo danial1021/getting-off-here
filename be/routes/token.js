@@ -4,7 +4,7 @@ var router = express.Router();
 const jwt = require("jsonwebtoken")
 
 router.post('/check', function(req, res, next) {
-    const token = req.body.token;
+    const token = String(req.body.token);
     let jwt_secret = process.env.JWT_SECRET;
 
     if (!token) {
@@ -16,15 +16,19 @@ router.post('/check', function(req, res, next) {
     const checkToken = new Promise((resolve, reject) => {
         jwt.verify(token, jwt_secret, function (err, decoded) {
         if (err) reject(err)
-        .catch()
         resolve(decoded);
         })
     });
 
     checkToken.then(
         token => {
-        console.log(token);
+        console.log(1)
         res.send({success:true})
+    })
+    .catch(
+        err => {
+        console.log(0)
+        res.send({success:false})
     })
 });
 
