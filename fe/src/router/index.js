@@ -4,7 +4,7 @@ import store from '../store'
 import axios from 'axios'
 
 const requireAuth = (to, from, next) => {
-  axios.post('/token/check', { token: store.token })
+  axios.post('/token/check', { token: store.state.token })
   .then(resp => {
     const token_val = resp.data.success
     console.log(token_val)
