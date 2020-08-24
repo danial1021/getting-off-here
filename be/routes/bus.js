@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) { //버스 목록 조회(검색할때 ?
                 buses.push(bus[i])
             }
         }
-        res.send(bus:buses)
+        res.send({bus:buses})
     })
 });
 
