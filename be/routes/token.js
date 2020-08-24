@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require("path")
 var router = express.Router();
+const jwt = require("jsonwebtoken")
 
 router.post('/check', function(req, res, next) {
     const token = req.body.token;
@@ -14,7 +15,7 @@ router.post('/check', function(req, res, next) {
     }
     const checkToken = new Promise((resolve, reject) => {
         jwt.verify(token, jwt_secret, function (err, decoded) {
-        if (err) res.send({success:false})
+        if (err) reject(err)
         resolve(decoded);
         });
     });
