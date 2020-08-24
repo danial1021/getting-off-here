@@ -9,7 +9,7 @@
         <v-col cols="12"></v-col>
         <v-col cols="12" md="6"></v-col>
         <v-col cols="12" md="6" :class="$style.mainform">
-            <v-text-field label="버스 검색" append-outer-icon="fas fa-search"></v-text-field>
+            <v-text-field label="버스 이름을 검색해주세요" v-model="busname" append-outer-icon="fas fa-search"></v-text-field>
 
             <v-card class="mx-auto" max-width="100%" outlined>
                 <v-list-item three-line>
@@ -48,7 +48,27 @@ export default {
   name: 'SearchBus',
   data: () => ({
     title: '버스 검색',
+
+    busname: ''
   }),
+
+  watch: {
+    busname: function(busname){
+      console.log(busname)
+      this.searchbus()
+    }
+  },
+
+  methods: {
+    searchbus () {
+      this.$http.get('/bus',{
+        params: { busname: this.busname }
+      }).then((resp) => {
+        console.log(resp.data)
+      })
+    }
+  },
+
   components: {
     Bar,
     Nav,

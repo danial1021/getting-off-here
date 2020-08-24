@@ -215,9 +215,9 @@ export default {
     },
 
     id_check () {
-      this.$http.get('/users/login/id-check',{params: {
-        id: this.id
-      }}).then((resp) => {
+      this.$http.get('/users/login/id-check',{
+        params: { id: this.id }
+      }).then((resp) => {
         if(resp.data.isok) {
           this.check_flagcheck_flag = true
           this.pop("아이디를 사용할 수 있습니다")
