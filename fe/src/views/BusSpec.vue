@@ -6,15 +6,15 @@
     </div>
     <Nav style="z-index:6"/>
 
-    <div style="padding-top:18%;padding-bottom:12%;z-index:1">
+    <div style="z-index:1">
       <div v-if="cnt == 1">
-        <Data />
+        <Data style="padding-top:30%"/>
       </div>
       <div v-if="cnt == 2">
-        <Up :buslines=buslines />
+        <Up :buslines=buslines style="padding-top:25%;padding-bottom:12%;" />
       </div>
       <div v-if="cnt == 3">
-        <Down :buslines=buslines />
+        <Down :buslines=buslines style="padding-top:25%;padding-bottom:12%;" />
       </div>
     </div>
     <v-spacer></v-spacer>
