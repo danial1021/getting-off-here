@@ -1,7 +1,7 @@
 <template>
   <div>
     <Bar />
-    <PageTitle :title=title />
+    <PageTitle :title=$store.state.bn.lineName[0] />
     <Nav />
 
     <div>
