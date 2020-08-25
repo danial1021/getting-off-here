@@ -70,9 +70,12 @@ export default {
 
   mounted() {
     this.$http.get('/bus/busstop',{
-      params: { busname: this.$store.state.bn }
+      params: { busname: this.$store.state.bn.lineName[0]}
     }).then((resp) => {
       console.log(resp.data)
+    })
+    .catch((err)=>{
+      console.log(err)
     })
   },
 
