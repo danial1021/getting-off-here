@@ -9,26 +9,19 @@
         <v-col cols="12"></v-col>
         <v-col cols="12" md="6"></v-col>
         <v-col cols="12" md="6" :class="$style.mainform">
-            <v-text-field label="버스 이름을 검색해주세요" v-model="busname" append-outer-icon="fas fa-search"></v-text-field>
+        <v-text-field label="버스 이름을 검색해주세요" v-model="busname" append-outer-icon="fas fa-search"></v-text-field>
 
-            <v-card class="mx-auto" max-width="100%" outlined>
-                <v-list-item three-line>
-                    <v-list-item-content>
-                        <v-list-item-title class="headline mb-1">재홍 69번</v-list-item-title>
-                        <v-list-item-subtitle>나와호 ~ 랑이님</v-list-item-subtitle>
-                    </v-list-item-content>
-                </v-list-item>
-            </v-card>
         <!-- v-card 태그가 버스 한 칸입니다. -->
-            <v-card class="mx-auto" max-width="100%" outlined>
-                <v-list-item three-line>
-                    <v-list-item-content>
-                        <v-list-item-title class="headline mb-1">재홍 69번</v-list-item-title>
-                        <v-list-item-subtitle>나와호 ~ 랑이님</v-list-item-subtitle>
-                    </v-list-item-content>
-                </v-list-item>
-            </v-card>
+          <v-card v-for="bus in buses" :key="bus._id" class="mx-auto" max-width="100%" outlined @click="spec(bus._id)">
+              <v-list-item three-line>
+                  <v-list-item-content>
+                      <v-list-item-title class="headline mb-1">{{bus.lineName[0] }}</v-list-item-title>
+                      <v-list-item-subtitle>{{ bus.dir_down_name[0] }} ~ {{ bus.dir_up_name[0] }}</v-list-item-subtitle>
+                  </v-list-item-content>
+              </v-list-item>
+          </v-card>
         <!-- 여기까지 -->
+
         </v-col>
       </v-row>
     </v-container>
@@ -48,7 +41,8 @@ export default {
   name: 'SearchBus',
   data: () => ({
     title: '버스 검색',
-
+    buses: [],
+    
     busname: ''
   }),
 
@@ -61,11 +55,20 @@ export default {
 
   methods: {
     searchbus () {
+
       this.$http.get('/bus',{
         params: { busname: this.busname }
       }).then((resp) => {
-        console.log(resp.data)
+        this.buses = resp.data.bus
+
+        console.log(this.buses)
       })
+    },
+
+    spec (r) {
+      this.$store.state.bid = this.r
+      console.log(r)
+      // BusSpec.vue 로 redirect
     }
   },
 
