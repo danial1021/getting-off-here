@@ -68,6 +68,29 @@ Vue.use(VueRouter)
     beforeEnter: requireAuth
   },
   {
+    path: '/busspec',
+    name: 'BusSpec',
+    component: () => import('../views/BusSpec.vue'),
+    beforeEnter: requireAuth,
+    // children: [
+    //   {
+    //     path: '/stationspec',
+    //     name: 'StationSpec',
+    //     component: () => import('../views/spec/StationSpec.vue')
+    //   },
+    //   {
+    //     path: '/up',
+    //     name: 'Up',
+    //     component: () => import('../views/spec/Up.vue')
+    //   },
+    //   {
+    //     path: '/down',
+    //     name: 'Down',
+    //     component: () => import('../views/spec/Down.vue')
+    //   }
+    // ]
+  },
+  {
     path: '/using',
     name: 'Using',
     component: () => import('../views/Using.vue')
