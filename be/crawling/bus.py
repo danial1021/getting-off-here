@@ -8,6 +8,7 @@ collection = db.buses
 
 soup = BeautifulSoup(requests.get("http://api.gwangju.go.kr/xml/lineInfo?serviceKey=tEA2cLH8Amh%2FxeavdbPj1Kz0%2FL4bC6eYyo%2BbF2V8A28VE7%2FFl%2F%2Fsyd9OnPL03g40YafaSbb7rYYPqYs0vhd49A%3D%3D&").text, 'lxml')
 lists = soup.find_all('line')
+linelists = {}
 for i in lists:
     result = {
         "lineId" : str(i.find("line_id").text),
@@ -28,6 +29,13 @@ for i in lists:
         result['run_interval'] = str(i.find('run_interval').text)
     except:
         result['run_interval'] = None
+    if collection.find_one({"lineName": result['lineName']}):
+        try:
+            linelists[result['lineName']] = int(linelists[result['lineName']]) + 1
+        except:
+            linelists[result['lineName']] = 1
+        result['lineName'] = result['lineName'] + "("+str(linelists[result['lineName']])+")"
+        
     if collection.find_one({"lineId": result['lineId']}):
         continue
     collection.insert_one(result)

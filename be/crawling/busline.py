@@ -8,12 +8,12 @@ db = client.GOH
 collection1 = db.buses
 collection2 = db.buslines
 
-line = collection1.find()
-for i in line:
+lines = collection1.find()
+for i in lines:
     soup = BeautifulSoup(requests.get("http://api.gwangju.go.kr/xml/lineStationInfo?serviceKey=tEA2cLH8Amh%2FxeavdbPj1Kz0%2FL4bC6eYyo%2BbF2V8A28VE7%2FFl%2F%2Fsyd9OnPL03g40YafaSbb7rYYPqYs0vhd49A%3D%3D&LINE_ID={}&".format(i['lineId'])).text, 'lxml')
     busstop = soup.find_all('busstop')
     try:
-        line = busstop[0].find('line_name').text.replace(".", "")
+        line = i['lineName']
         busline = {}
         for j in busstop:
             try:
