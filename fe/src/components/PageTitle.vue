@@ -12,7 +12,7 @@
             </v-flex>
             
             <v-flex sm4>
-                <h1 align="center">{{ title }}</h1>
+                <h2 align="center">{{ title }}</h2>
             </v-flex>
             
             <v-flex sm4>

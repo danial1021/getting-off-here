@@ -6,10 +6,19 @@ const Busstop = require("../model/busStop")
 //정류장 목록 검색
 
 router.get('/', (req, res, next)=>{ //busstop_name 변수로 정류장 이름 보내주세요
-    Busstop.find({busstop_name:{$regex:String(req.query.busstop_name)}})
-    .then((bus)=>{
-        res.send({busStop:bus})
-    })
+    try{
+        Number(req.query.busstop_name)
+        Busstop.find({ars_id:{$regex:String(req.query.busstop_name)}})
+        .then((bus)=>{
+            res.send({busStop:bus})
+        })
+    }
+    catch{
+        Busstop.find({busstop_name:{$regex:String(req.query.busstop_name)}})
+        .then((bus)=>{
+            res.send({busStop:bus})
+        })
+    }
 })
 
 

@@ -9,17 +9,19 @@
         <Data />
       </div>
       <div v-if="cnt == 2">
-        <Up />
+        <Up :buslines=buslines />
       </div>
       <div v-if="cnt == 3">
-        <Down />
+        <Down :buslines=buslines />
       </div>
     </div>
+    <br>
+    <br>
 
     <v-bottom-navigation
       :value="activeBtn"
       grow
-      absolute
+      fixed
       color="teal"
     >
       <v-btn @click="cnt = 1">
@@ -57,7 +59,8 @@ export default {
   data: () => ({
     activeBtn: 0,
     title: '',
-    cnt: 1
+    cnt: 1,
+    buslines: []
   }),
   components: {
     Bar,
@@ -72,7 +75,8 @@ export default {
     this.$http.get('/bus/busstop',{
       params: { busname: this.$store.state.bn.lineName[0]}
     }).then((resp) => {
-      console.log(resp.data)
+      this.buslines = resp.data.busline
+      console.log(this.buslines)
     })
     .catch((err)=>{
       console.log(err)
