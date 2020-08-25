@@ -1,10 +1,12 @@
 <template>
   <div>
-    <Bar />
-    <PageTitle :title=$store.state.bn.lineName[0] />
-    <Nav />
+    <div style="position:fixed;margin:0 auto;left:0;right:0;z-index:999;">
+      <Bar/>
+      <PageTitle :title=$store.state.bn.lineName[0] />
+    </div>
+    <Nav/>
 
-    <div>
+    <div style="padding-top:18%;padding-bottom:12%;z-index:1">
       <div v-if="cnt == 1">
         <Data />
       </div>
@@ -15,14 +17,13 @@
         <Down :buslines=buslines />
       </div>
     </div>
-    <br>
-    <br>
-
+    <v-spacer></v-spacer>
+    
     <v-bottom-navigation
       :value="activeBtn"
       grow
-      fixed
       color="teal"
+      style="position:fixed;left:0;right:0;z-index:2;"
     >
       <v-btn @click="cnt = 1">
         <span>버스 정보</span>

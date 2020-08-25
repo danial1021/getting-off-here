@@ -15,7 +15,7 @@
           <v-card v-for="bus in buses" :key="bus.lineName[0]" class="mx-auto" max-width="100%" outlined @click="spec(bus)">
               <v-list-item three-line>
                   <v-list-item-content>
-                      <v-list-item-title class="headline mb-1">{{bus.lineName[0] }}</v-list-item-title>
+                      <v-list-item-title class="headline mb-1">{{ bus.lineName[0] }}</v-list-item-title>
                       <v-list-item-subtitle>{{ bus.dir_down_name[0] }} ~ {{ bus.dir_up_name[0] }}</v-list-item-subtitle>
                   </v-list-item-content>
               </v-list-item>
