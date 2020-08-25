@@ -20,7 +20,7 @@ router.get('/busstop', function(req, res, next) { //버스가 다니는 버스 �
     Busline.find()
     .then((busline)=>{
         var busstops = busline[i]['lines'][0][req.query.busname]
-        res.send(busstops)
+        res.send({busstop:busstops})
     })
 });
 
