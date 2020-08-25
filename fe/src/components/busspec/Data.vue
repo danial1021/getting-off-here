@@ -1,11 +1,38 @@
 <template>
-  <v-btn block color="secondary" dark>Block Button</v-btn>
+    <v-card
+    class="mx-auto"
+    max-width="400"
+    tile
+    dense
+    >
+        <v-list-item two-line>
+            <v-list-item-content>
+                <v-list-item-title>배차간격</v-list-item-title>
+                <v-list-item-subtitle>{{ $store.state.bn.run_interval[0] + '분'}}</v-list-item-subtitle>
+            </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item two-line>
+            <v-list-item-content>
+                <v-list-item-title>첫차</v-list-item-title>
+                <v-list-item-subtitle>{{ $store.state.bn.first_run_time[0]}}</v-list-item-subtitle>
+            </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item two-line>
+            <v-list-item-content>
+                <v-list-item-title>막차</v-list-item-title>
+                <v-list-item-subtitle>{{ $store.state.bn.last_run_time[0]}}</v-list-item-subtitle>
+            </v-list-item-content>
+        </v-list-item>
+
+    </v-card>
 </template>
 
 <script>
-  export default {
+export default {
     name: "Data",
     data: () => ({
     })
-  }
+}
 </script>

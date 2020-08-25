@@ -2,7 +2,7 @@
     <div style="background:white">
         <v-layout>
             <v-flex sm4>
-               <v-btn 
+                <v-btn 
                 icon
                 @click="$router.go('-1')"
                 style="float:right"
@@ -17,8 +17,8 @@
             
             <v-flex sm4>
                 <v-btn 
-                 icon
-                 @click="$router.go('1')"
+                icon
+                @click="$router.go('1')"
                 >
                     <v-icon>arrow_forward</v-icon>
                 </v-btn> 
