@@ -132,7 +132,10 @@ export default {
             }
           },
           {
-            title: '아이디/비밀번호 찾기'
+            title: '아이디/비밀번호 찾기',
+            to: {
+              path: '/find'
+            }
           }
         ],
       },

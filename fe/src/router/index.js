@@ -56,6 +56,11 @@ Vue.use(VueRouter)
     component: () => import('../views/SignUp.vue')
   },
   {
+    path: '/find',
+    name: 'Find',
+    component: () => import('../views/Find.vue')
+  },
+  {
     path: '/searchbus',
     name: 'SearchBus',
     component: () => import('../views/SearchBus.vue'),
