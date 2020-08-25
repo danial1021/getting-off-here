@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div style="position:fixed;margin:0 auto;left:0;right:0;z-index:999;">
+    <div style="position:fixed;margin:0 auto;left:0;right:0;z-index:5;">
       <Bar/>
       <PageTitle :title=$store.state.bn.lineName[0] />
     </div>
-    <Nav/>
+    <Nav style="z-index:6"/>
 
     <div style="padding-top:18%;padding-bottom:12%;z-index:1">
       <div v-if="cnt == 1">

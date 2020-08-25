@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="background:white">
         <v-layout>
             <v-flex sm4>
                <v-btn 
