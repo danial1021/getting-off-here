@@ -19,8 +19,11 @@ router.get('/', function(req, res, next) { //버스 목록 조회(검색할때 ?
 router.get('/busstop', function(req, res, next) { //버스가 다니는 버스 정류장 조회 버스가 다니는 정류장 목록을 보내줌 
     Busline.find()
     .then((busline)=>{
-        var busstops = busline[i]['lines'][0][req.query.busname]
-        res.send({busstop:busstops})
+        for(var i=0;i<busline.length;i++){
+            if(Object.keys(busline[i].lines[0]) == req.query.busname){
+                console.log(busline[i].lines[0][Object.keys(busline[i].lines[0])])
+            }
+        }
     })
 });
 
