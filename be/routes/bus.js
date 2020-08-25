@@ -21,7 +21,7 @@ router.get('/busstop', function(req, res, next) { //버스가 다니는 버스 �
     .then((busline)=>{
         for(var i=0;i<busline.length;i++){
             if(Object.keys(busline[i].lines[0]) == req.query.busname){
-                console.log(busline[i].lines[0][Object.keys(busline[i].lines[0])])
+                res.send({busline:busline[i].lines[0][Object.keys(busline[i].lines[0])]})
             }
         }
     })
