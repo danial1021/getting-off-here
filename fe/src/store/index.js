@@ -16,7 +16,7 @@ export default new Vuex.Store({
     user : {
       name: "비로그인"
     },
-    bn: ''
+    bn: {}
   },
 
   mutations: { // mutations는 변수를 조작하는 함수를 의미

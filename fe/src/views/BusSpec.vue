@@ -3,12 +3,42 @@
     <Bar />
     <PageTitle :title=title />
     <Nav />
-    
-    <div class="text-center">
-      <v-btn class="ma-2" color="#F7E7D6">버스 정보</v-btn>
-      <v-btn class="ma-2" color="#848CB5">상행 보기</v-btn>
-      <v-btn class="ma-2" color="#FFBDBD">하행 보기</v-btn>
+
+    <div>
+      <div v-if="cnt == 1">
+        <Data />
+      </div>
+      <div v-if="cnt == 2">
+        <Up />
+      </div>
+      <div v-if="cnt == 3">
+        <Down />
+      </div>
     </div>
+
+    <v-bottom-navigation
+      :value="activeBtn"
+      grow
+      absolute
+      color="teal"
+    >
+      <v-btn @click="cnt = 1">
+        <span>버스 정보</span>
+        <v-icon>mdi-history</v-icon>
+      </v-btn>
+
+      <v-btn @click="cnt = 2">
+        <span>상행 보기</span>
+        <v-icon>mdi-chevron-triple-up</v-icon>
+      </v-btn>
+
+      <v-btn @click="cnt = 3">
+        <span>하행 보기</span>
+        <v-icon>mdi-chevron-triple-down</v-icon>
+      </v-btn>
+    </v-bottom-navigation>
+
+    <!-- <h2>{{ $route.params.data}}</h2> -->
 
   </div>
 </template>
@@ -17,16 +47,25 @@
 import Bar from '@/components/Bar.vue'
 import Nav from '@/components/Nav.vue'
 import PageTitle from '@/components/PageTitle.vue'
+import Data from '@/components/busspec/Data.vue'
+import Up from '@/components/busspec/Up.vue'
+import Down from '@/components/busspec/Down.vue'
 
 export default {
   name: 'BusSpec',
+
   data: () => ({
-    title: ''
+    activeBtn: 0,
+    title: '',
+    cnt: 1
   }),
   components: {
     Bar,
     Nav,
-    PageTitle
+    PageTitle,
+    Data,
+    Up,
+    Down
   },
 
   mounted() {
@@ -38,6 +77,6 @@ export default {
   },
 
   methods: {
-  },
+  }
 }
 </script>
