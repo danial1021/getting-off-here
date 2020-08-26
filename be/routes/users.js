@@ -2,16 +2,19 @@ var express = require('express');
 var router = express.Router();
 const User = require("../model/user")
 const jwt = require("jsonwebtoken")
+const crypto = require('crypto')
 
 router.post('/login', function(req, res, next) { //아이디 비밀번호 받음
   const u = req.body
+  u.password = crypto.createHash("sha512").update(u.password + process.env.SALT).digest("hex");
   User.find({id:u.id, pw: u.password})
     .then((user)=>{
+      console.log(user)
       const token = jwt.sign({
       id : user[0].id,
       name : user[0].name,
     }, process.env.JWT_SECRET, {
-      expiresIn: '10s', // 10분
+      expiresIn: '10d', // 10분
       issuer: 'getting-off-here',  //발급자
     });
     res.send({user:{id: user[0].id, name:user[0].name}, token:token});  //id, 이름 유저정보로, token 보냄
@@ -24,6 +27,7 @@ router.post('/login', function(req, res, next) { //아이디 비밀번호 받음
 router.post('/register', function(req, res, next) { //회원가입정보 보내주세요
   const u = req.body;
   user = new User({id:u.id, pw:u.pw, name:u.name, date: new Date(u.year, u.month, u.day), phonenumber:u.phonenumber })
+  user.pw = crypto.createHash("sha512").update(user.pw + process.env.SALT).digest("hex");
   user.save((err, data)=>{
     console.log(data)
     if(err){

@@ -219,7 +219,7 @@ export default {
         params: { id: this.id }
       }).then((resp) => {
         if(resp.data.isok) {
-          this.check_flagcheck_flag = true
+          this.check_flag = true
           this.pop("아이디를 사용할 수 있습니다")
         }
         else this.pop("아이디가 중복되었습니다")
