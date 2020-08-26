@@ -61,6 +61,7 @@ export default {
         params: { busstop_name: this.busstop }
       }).then((resp) => {
         this.busStops = resp.data.busStop.sort((a,b)=>{
+          if (this.busStops=={}) return
           return a.busstop_name < b.busstop_name ? -1 : a.busstop_name > b.busstop_name ? 1 : 0;
         })
         console.log(this.busStops)

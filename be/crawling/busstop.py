@@ -21,7 +21,7 @@ for i in busstop:
     try:
         result['ars_id'] = i.find('ars_id').text
     except:
-        result['ars_id'] = None
+        result['ars_id'] = '9999'
     try:
         result['next_busstop'] = i.find('next_busstop').text
     except:
