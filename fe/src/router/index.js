@@ -96,6 +96,11 @@ Vue.use(VueRouter)
     // ]
   },
   {
+    path: '/book',
+    name: 'Book',
+    component: () => import('../views/Book.vue')
+  },
+  {
     path: '/using',
     name: 'Using',
     component: () => import('../views/Using.vue')

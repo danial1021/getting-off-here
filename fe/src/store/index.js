@@ -16,7 +16,8 @@ export default new Vuex.Store({
     user : {
       name: "비로그인"
     },
-    bn: {}
+    bn: {}, // 버스 객체
+    bs: '' // 정류장 선택 시에 예약 페이지로 같이 넘어가게 되는 정류장 이름 변수
   },
 
   mutations: { // mutations는 변수를 조작하는 함수를 의미
