@@ -16,8 +16,7 @@ router.get('/', (req, res, next)=>{ //busstop_name 변수로 정류장 이름 �
         var bus=[]
         res.send({busStop:bus})
     }
-    console.log(Number(req.query.busstop_name))
-    if(isNaN(Number(req.query.busstop_name))==false && req.query.busstop_name.length>3){
+    else if(isNaN(Number(req.query.busstop_name))==false && req.query.busstop_name.length>3){
         console.log("번호")
         Busstop.find({ars_id:{$regex:String(req.query.busstop_name)}})
         .then((bus)=>{
