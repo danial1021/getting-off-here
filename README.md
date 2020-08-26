@@ -19,4 +19,6 @@ repository에 대해 더 좋은 방향으로 나아갈 수 있다면 언제든�
 .env 파일을 be폴더 바로 아래에 추가하고  
 MONGO_URI = (몽고디비URL/DB이름)  
 JWT_SECRET = (jwt key)  
-이렇게 값을 넣어주시면 됩니다.
+SALT = (암호화용 문자열)
+이렇게 값을 넣어주시면 됩니다.  
+be -> crawling 폴더 안에 있는 파이썬 파일을 실행시켜서 db정보를 넣으셔야 합니다.
