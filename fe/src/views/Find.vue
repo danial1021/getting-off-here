@@ -8,20 +8,16 @@
             <v-row>
                 <v-col>
                     <v-row
-                      :align='center'
-                      :justify='center'
+                    :align='center'
+                    :justify='center'
                     >
                         <div class="box1" style="width: 400px; height: 360px; text-align: center; mamrgin-top: 20px;">
-                            <a href="/idsearch">
-                                <v-container style="width: 180px; height: 180px; border: 1.5px solid black; float:left; ">
-                                    <br><h3>아이디<br><br>찾기</h3>
-                                </v-container>
-                            </a>
-                            <a href="/pwsearch">
-                                <v-container style="width: 180px; height: 180px; border: 1.5px solid black; margin-left: 40px; float:left;">
-                                    <br><h3>비밀번호<br><br>찾기</h3>
-                                </v-container>
-                            </a>
+                            <v-container @click="$router.push('/idsearch')" style="width: 180px; height: 180px; border: 1.5px solid black; float:left; ">
+                                <br><h3>아이디<br><br>찾기</h3>
+                            </v-container>
+                            <v-container @click="$router.push('/pwsearch')" style="width: 180px; height: 180px; border: 1.5px solid black; margin-left: 40px; float:left;">
+                                <br><h3>비밀번호<br><br>찾기</h3>
+                            </v-container>
                         </div>
                     </v-row>
                 </v-col>

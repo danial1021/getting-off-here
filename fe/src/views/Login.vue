@@ -31,7 +31,7 @@
           ></v-text-field>
           <footer class="footer">
           <v-btn color="#4DD0E1" @click="login" style="margin-right:10px;">LOGIN</v-btn>
-          <a href="/idsearch">아이디찾기</a>/<a href="/pwsearch">비밀번호찾기</a>
+          <span @click="$router.push('/idsearch')" style="color:#304FFE">아이디 찾기</span> / <span @click="$router.push('/pwsearch')" style="color:#304FFE">비밀번호 찾기</span>
           </footer> 
         </v-col>
       </v-row>
