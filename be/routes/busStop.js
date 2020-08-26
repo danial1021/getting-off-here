@@ -38,6 +38,17 @@ router.get('/', (req, res, next)=>{ //busstop_name 변수로 정류장 이름 �
     }   
 })
 
+router.get('/id', (req, res, next)=>{
+    Busstop.find({busstop_id:req.query.busstop_id})
+    .then((busstop)=>{
+        res.send({busstop:busstop})
+    })
+    .catch((e)=>{
+        console.log(e)
+    })
+})
+
+
 
 
 module.exports = router;
