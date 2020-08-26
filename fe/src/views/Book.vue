@@ -3,8 +3,8 @@
         <Bar />
         <PageTitle :title=$store.state.bs />
         <Nav />
+        <Map />
 
-        
     </div>
 </template>
 
@@ -12,6 +12,7 @@
 import Bar from '@/components/Bar.vue'
 import Nav from '@/components/Nav.vue'
 import PageTitle from '@/components/PageTitle.vue'
+import Map from '@/components/Map.vue'
 
 export default {
     name: 'Book',
@@ -25,7 +26,8 @@ export default {
     components: {
         Bar,
         Nav,
-        PageTitle
+        PageTitle,
+        Map
     },
 }
 </script>
