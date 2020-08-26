@@ -5,6 +5,10 @@ const Busline = require('../model/busline')
 
 router.get('/', function(req, res, next) { //버스 목록 조회(검색할때 ?) 버스이름 예: 진월75 랑 각 종점 와 노선id를 보냄
     var buses = [];
+    if (req.query.busname==""){
+        var bus=[]
+        res.send({bus:bus})
+    }
     Bus.find()
     .then((bus)=>{
         for(var i =0;i<bus.length;i++){
