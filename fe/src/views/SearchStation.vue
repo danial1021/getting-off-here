@@ -15,7 +15,7 @@
                 <v-list-item three-line>
                     <v-list-item-content>
                         <v-list-item-title class="headline mb-1">{{ busstop.busstop_name }}</v-list-item-title>
-                        <v-list-item-subtitle>{{ busstop.next_busstop }}방향</v-list-item-subtitle>
+                        <v-list-item-subtitle>{{ busstop.next_busstop }}방향 / {{ busstop.ars_id }}</v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
             </v-card>
