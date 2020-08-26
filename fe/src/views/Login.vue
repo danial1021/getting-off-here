@@ -30,7 +30,8 @@
             :class="$style.id"
           ></v-text-field>
           <footer class="footer">
-          <v-btn color="#4DD0E1" @click="login">LOGIN</v-btn>
+          <v-btn color="#4DD0E1" @click="login" style="margin-right:10px;">LOGIN</v-btn>
+          <a href="/idsearch">아이디찾기</a>/<a href="/pwsearch">비밀번호찾기</a>
           </footer> 
         </v-col>
       </v-row>

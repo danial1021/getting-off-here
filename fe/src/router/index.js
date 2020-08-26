@@ -61,6 +61,21 @@ Vue.use(VueRouter)
     component: () => import('../views/Find.vue')
   },
   {
+    path: '/idsearch',
+    name: 'IdSearch',
+    component: () => import('../views/IdSearch.vue')
+  },
+  {
+    path: '/pwsearch',
+    name: 'PwSearch',
+    component: () => import('../views/PwSearch.vue')
+  },
+  {
+    path: '/Result',
+    name: 'result',
+    component: () => import('../views/Result.vue')
+  },
+  {
     path: '/searchbus',
     name: 'SearchBus',
     component: () => import('../views/SearchBus.vue'),
