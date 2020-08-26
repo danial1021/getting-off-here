@@ -77,7 +77,7 @@ export default {
       params: { busname: this.$store.state.bn.lineName[0]}
     }).then((resp) => {
       this.buslines = resp.data.busline
-      console.log(this.buslines)
+      // console.log(this.buslines)
     })
     .catch((err)=>{
       console.log(err)

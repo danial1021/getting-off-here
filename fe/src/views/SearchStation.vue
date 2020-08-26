@@ -50,15 +50,15 @@ export default {
 
   watch: {
     busstop: function(busstop){
-      console.log(busstop)
-      this.searchbusStop()
+      // console.log(busstop)
+      this.searchbusStop(busstop)
     }
   },
 
   methods: {
-    searchbusStop() {
+    searchbusStop(busstop) {
       this.$http.get('/busstop',{
-        params: { busstop_name: this.busstop }
+        params: { busstop_name: busstop }
       }).then((resp) => {
         this.busStops = resp.data.busStop.sort((a,b)=>{
           if (this.busStops=={}) return

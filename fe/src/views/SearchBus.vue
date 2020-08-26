@@ -48,25 +48,25 @@ export default {
 
   watch: {
     busname: function(busname){
-      console.log(busname)
-      this.searchbus()
+      // console.log(busname)
+      this.searchbus(busname)
     }
   },
 
   methods: {
-    searchbus () {
+    searchbus (busname) {
       this.$http.get('/bus',{
-        params: { busname: this.busname }
+        params: { busname: busname }
       }).then((resp) => {
         this.buses = resp.data.bus
 
-        console.log(this.buses)
+        // console.log(this.buses)
       })
     },
 
     spec (r) {
       this.$store.state.bn = r
-      console.log(r)
+      // console.log(r)
       this.$router.push('/busspec')
     }
   },
