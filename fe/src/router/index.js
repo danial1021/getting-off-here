@@ -71,11 +71,6 @@ Vue.use(VueRouter)
     component: () => import('../views/PwSearch.vue')
   },
   {
-    path: '/Result',
-    name: 'result',
-    component: () => import('../views/Result.vue')
-  },
-  {
     path: '/searchbus',
     name: 'SearchBus',
     component: () => import('../views/SearchBus.vue'),
