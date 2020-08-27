@@ -5,8 +5,10 @@ const jwt = require("jsonwebtoken")
 const crypto = require('crypto')
 
 router.post('/login', function(req, res, next) { //아이디 비밀번호 받음
+  const cipher = crypto.createCipher('aes-256-cbc', process.env.SALT);
   const u = req.body
-  u.password = crypto.createHash("sha512").update(u.password + process.env.SALT).digest("hex");
+  u.password = cipher.update(u.password, 'utf8', 'base64');
+  u.password += cipher.final('base64');
   User.find({id:u.id, pw: u.password})
     .then((user)=>{
       console.log(user)
@@ -25,9 +27,13 @@ router.post('/login', function(req, res, next) { //아이디 비밀번호 받음
 });
 
 router.post('/register', function(req, res, next) { //회원가입정보 보내주세요
+  const cipher = crypto.createCipher('aes-256-cbc', process.env.SALT);
   const u = req.body;
-  user = new User({id:u.id, pw:u.pw, name:u.name, pword:u.pword,answer:u.answer, date: new Date(u.year, u.month, u.day), phonenumber:u.phonenumber })
-  user.pw = crypto.createHash("sha512").update(user.pw + process.env.SALT).digest("hex");
+  console.log(u)
+  user = new User({id:u.id, pw:u.pw, name:u.name, pword:u.pword, answer:u.answer, date: new Date(u.year, u.month, u.day), phonenumber:u.phonenumber })
+  console.log(u)
+  user.pw = cipher.update(user.pw, 'utf8', 'base64');
+  user.pw += cipher.final('base64');
   user.save((err, data)=>{
     console.log(data)
     if(err){
@@ -53,9 +59,32 @@ router.get("/login/id-check", (req, res, next)=>{  //아이디 중복 확인
 
 router.post("/idSearch", (req, res, next)=>{
   console.log(req.body)
+  const u = req.body
+  User.findOne({name : u.name, date: new Date(u.year, u.month, u.day), phonenumber:u.phonenumber })
+    .then((user)=>{
+      console.log(user)
+      if(user != null) return res.send({ id: user.id });
+      res.send({id:"발견되지 않음"});
+    })
+    .catch((e) => {
+      res.send({ id:"발견되지 않음", msg: e.message })
+    })
 });
 
 router.post("/pwSearch", (req, res, next)=>{
+  const decipher = crypto.createDecipher('aes-256-cbc', process.env.SALT);
   console.log(req.body)
+  const u = req.body;
+  User.findOne({ id:u.id, pword:u.pword, answer:u.answer })
+    .then((user)=>{
+      console.log(user)
+      let result2 = decipher.update(user.pw, 'base64', 'utf8');
+      result2 += decipher.final('utf8');
+      if(user != null) return res.send({ password: result2 });
+      res.send({password: "운영자에게 문의 하세요."});
+    })
+    .catch((e) => {
+      res.send({ password: "운영자에게 문의 하세요.", msg: e.message })
+    })
 });
 module.exports = router;
