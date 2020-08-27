@@ -26,7 +26,7 @@ router.post('/login', function(req, res, next) { //아이디 비밀번호 받음
 
 router.post('/register', function(req, res, next) { //회원가입정보 보내주세요
   const u = req.body;
-  user = new User({id:u.id, pw:u.pw, name:u.name, date: new Date(u.year, u.month, u.day), phonenumber:u.phonenumber })
+  user = new User({id:u.id, pw:u.pw, name:u.name, pword:u.pword,answer:u.answer, date: new Date(u.year, u.month, u.day), phonenumber:u.phonenumber })
   user.pw = crypto.createHash("sha512").update(user.pw + process.env.SALT).digest("hex");
   user.save((err, data)=>{
     console.log(data)
@@ -51,4 +51,11 @@ router.get("/login/id-check", (req, res, next)=>{  //아이디 중복 확인
     })
 });
 
+router.post("/idSearch", (req, res, next)=>{
+  console.log(req.body)
+});
+
+router.post("/pwSearch", (req, res, next)=>{
+  console.log(req.body)
+});
 module.exports = router;

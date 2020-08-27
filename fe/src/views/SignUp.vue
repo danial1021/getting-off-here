@@ -252,6 +252,7 @@ export default {
     },
 
     id_check () {
+      if(this.id=="") return
       this.$http.get('/users/login/id-check',{
         params: { id: this.id }
       }).then((resp) => {
