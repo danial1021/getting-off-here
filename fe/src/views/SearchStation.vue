@@ -64,15 +64,15 @@ export default {
           if (this.busStops=={}) return
           return a.busstop_name < b.busstop_name ? -1 : a.busstop_name > b.busstop_name ? 1 : 0;
         })
-        console.log(this.busStops)
+        // console.log(this.busStops)
       })
     },
 
     reser(busid, busname) {
       this.$store.state.bs = busname
       this.$store.state.bi = busid
-      console.log(this.$store.state.bs)
-      console.log(this.$store.state.bi)
+      // console.log(this.$store.state.bs)
+      // console.log(this.$store.state.bi)
       this.$router.push('/book')
     } 
   }

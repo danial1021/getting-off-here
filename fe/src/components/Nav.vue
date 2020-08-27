@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer v-model="$store.state.drawer" absolute temporary>
     <v-list v-if="isAuthenticated() === false">
-      <v-list-item-content>
+      <v-list-item-content style="margin-left:15px;">
         <v-list-item-title class="title">{{ $store.state.user.name }}님</v-list-item-title>
       </v-list-item-content>
       <v-divider></v-divider>
@@ -30,7 +30,7 @@
     </v-list>
     
     <v-list v-else>
-      <v-list-item-content>
+      <v-list-item-content style="margin-left:15px;">
         <v-list-item-title class="title">{{ $store.state.user.name }}님</v-list-item-title>
       </v-list-item-content>
       <v-divider></v-divider>

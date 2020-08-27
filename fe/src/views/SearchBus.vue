@@ -42,7 +42,6 @@ export default {
   data: () => ({
     title: '버스 검색',
     buses: [],
-    
     busname: ''
   }),
 
