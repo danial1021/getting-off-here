@@ -114,6 +114,12 @@ Vue.use(VueRouter)
     path: '/using',
     name: 'Using',
     component: () => import('../views/Using.vue')
+  },
+  {
+    path: '/reservation',
+    name: 'Reservation',
+    component: () => import('../views/Reservation.vue'),
+    beforeEnter: requireAuth
   }
 ]
 
