@@ -8,7 +8,7 @@ router.post('/login', function(req, res, next) { //아이디 비밀번호 받음
   const cipher = crypto.createCipher('aes-256-cbc', process.env.SALT);
   const u = req.body
   u.password = cipher.update(u.password, 'utf8', 'base64');
-  u.password += cipher.final('base64');
+  u.password += String(cipher.final('base64'));
   User.find({id:u.id, pw: u.password})
     .then((user)=>{
       console.log(user)
@@ -33,7 +33,7 @@ router.post('/register', function(req, res, next) { //회원가입정보 보내�
   user = new User({id:u.id, pw:u.pw, name:u.name, pword:u.pword, answer:u.answer, date: new Date(u.year, u.month, u.day), phonenumber:u.phonenumber })
   console.log(u)
   user.pw = cipher.update(user.pw, 'utf8', 'base64');
-  user.pw += cipher.final('base64');
+  user.pw += String(cipher.final('base64'));
   user.save((err, data)=>{
     console.log(data)
     if(err){
