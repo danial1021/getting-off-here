@@ -8,31 +8,35 @@
         max-width="344">
             <div class="allbox">
                 <v-text-field
-                v-model="name"
-                label="이름"
-                hint="ex) 홍길동"
+                v-model="id"
                 :outlined=true
-                :persistent-hint=true
-                :counter="10"
-                required>
-                </v-text-field>
+                label="ID"
+                hint="4자리 이상 && 영문 숫자 혼용"  
+                :counter="20"
+                required
+                ></v-text-field>
                 <div style="margin-bottom: -20px;">
                     <v-select
-                      :items="PwWord"
-                      :outlined=true
-                      label="비밀번호 찾기 질문"
+                    :items="pword_data"
+                    v-model="pword"
+                    :outlined=true
+                    label="비밀번호 찾기 질문"
                     ></v-select>
                     <v-text-field
-                      v-model="name"
-                      label="답변"
-                      :outlined=true
-                      :persistent-hint=true
-                      required
+                    v-model="answer"
+                    label="답변"
+                    :outlined=true
+                    :persistent-hint=true
+                    required
                     ></v-text-field>
                 </div>
                 <v-btn color="blue">확인</v-btn>
             </div>
         </v-card>
+        <!-- <br><br><br>
+        <v-alert type="warning">
+            만약 비밀번호를 찾을 수 없다면 개발자에게 문의해주세요.
+        </v-alert> -->
     </div>
 </template>
 
@@ -51,7 +55,9 @@ export default {
 
     data: () => ({
         title: '비밀번호 찾기',
-        PwWord:[
+
+        id: '',
+        pword_data:[
             '기억에 남는 추억의 장소는?',
             '자신의 인생 좌우명은?',
             '가장 기억에 남는 선생님 성함은?',
@@ -63,7 +69,9 @@ export default {
             '초등학교 때 기억에 남는 짝꿍 이름은?',
             '다시 태어나면 되고 싶은 것은?',
             '내가 좋아하는 캐릭터는?'
-        ]
+        ],
+        pword: '',
+        answer: ''
     })
 }
     

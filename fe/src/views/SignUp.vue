@@ -61,7 +61,26 @@
               ></v-text-field>
             </validation-provider>
 
-            <br>
+            <v-row align="center">
+              <v-col class="d-flex" cols="7" sm="8">
+                <v-select
+                :items="pword_data"
+                v-model="pword"
+                :outlined=true
+                label="비밀번호 찾기 질문"
+                :placeholder="pword_data[0]"
+                ></v-select>
+              </v-col>
+              <v-col class="d-flex" cols="5" sm="4">
+                <v-text-field
+                v-model="answer"
+                label="답변"
+                :outlined=true
+                required
+                ></v-text-field>
+              </v-col>
+            </v-row>
+
             <section class="birth">
               <table>
                 <td class="tables">
@@ -186,6 +205,22 @@ export default {
     phonenumber: '',
     check_flag: false,
 
+    pword_data:[
+      '기억에 남는 추억의 장소는?',
+      '자신의 인생 좌우명은?',
+      '가장 기억에 남는 선생님 성함은?',
+      '타인이 모르는 신체 비밀이 있다면?',
+      '유년시절 가장 생각나는 친구 이름은?',
+      '인상 깊게 읽은 책 이름은?',
+      '읽은 책 중에서 좋아하는 구절이 있다면?',
+      '자신이 두 번째로 존경하는 인물은?',
+      '초등학교 때 기억에 남는 짝꿍 이름은?',
+      '다시 태어나면 되고 싶은 것은?',
+      '내가 좋아하는 캐릭터는?'
+      ],
+    pword: '',
+    answer: '',
+
     snackbar: false,
     sbMsg: ''
   }),
@@ -201,6 +236,8 @@ export default {
           year: this.year,
           month: this.month,
           day: this.day,
+          pword: this.pword,
+          answer: this.answer,
           phonenumber: this.phonenumber
         }
         this.$store.dispatch('signup', data)
@@ -233,6 +270,8 @@ export default {
       this.year = ''
       this.month = ''
       this.day = ''
+      this.pword = ''
+      this.answer = ''
       this.phonenumber = ''
     },
 

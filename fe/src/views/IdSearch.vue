@@ -12,10 +12,9 @@
                 label="이름"
                 hint="ex) 홍길동"
                 :outlined=true
-                :persistent-hint=true
                 :counter="10"
-                required>
-                </v-text-field>
+                required
+                ></v-text-field>
                 <section class="birth">
                     <table>
                         <td class="year">
@@ -59,7 +58,7 @@
                 </section>
                 <div style="margin-bottom: -20px;">
                     <v-text-field
-                        v-model="name"
+                        v-model="phonenumber"
                         label="전화번호"
                         :outlined=true
                         :persistent-hint=true
@@ -86,7 +85,13 @@ export default {
     },
 
     data: () => ({
-        title: '아이디 찾기'
+        title: '아이디 찾기',
+
+        name: '',
+        year: '',
+        month: '',
+        day: '',
+        phonenumber: ''
     })
 }
     
