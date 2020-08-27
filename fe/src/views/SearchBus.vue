@@ -59,7 +59,6 @@ export default {
         params: { busname: busname }
       }).then((resp) => {
         this.buses = resp.data.bus
-
         // console.log(this.buses)
       })
     },

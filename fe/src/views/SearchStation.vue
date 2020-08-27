@@ -11,7 +11,7 @@
         <v-col cols="12" md="6" :class="$style.mainform">
         <v-text-field label="정류장 이름이나 번호를 검색해주세요" v-model="busstop" append-outer-icon="fas fa-search"></v-text-field>
         <!-- v-card 태그가 정류장 한 칸입니다. -->
-            <v-card v-for="busstop in busStops" :key="busstop.busstop_id" class="mx-auto" max-width="100%" outlined @click="reser(busstop.busstop_name)">
+            <v-card v-for="busstop in busStops" :key="busstop.busstop_id" class="mx-auto" max-width="100%" outlined @click="reser(busstop.busstop_id,busstop.busstop_name)">
                 <v-list-item three-line>
                     <v-list-item-content>
                         <v-list-item-title class="headline mb-1">{{ busstop.busstop_name }}</v-list-item-title>
@@ -68,11 +68,13 @@ export default {
       })
     },
 
-    reser(busname) {
-        this.$store.state.bs = busname
-        console.log(this.$store.state.bs)
-        this.$router.push('/book')
-      }
+    reser(busid, busname) {
+      this.$store.state.bs = busname
+      this.$store.state.bi = busid
+      console.log(this.$store.state.bs)
+      console.log(this.$store.state.bi)
+      this.$router.push('/book')
+    } 
   }
 }
 </script>
