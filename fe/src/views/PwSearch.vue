@@ -30,7 +30,7 @@
                     required
                     ></v-text-field>
                 </div>
-                <v-btn color="blue">확인</v-btn>
+                <v-btn color="blue" @click="inquire_pw">확인</v-btn>
             </div>
         </v-card>
         <!-- <br><br><br>
@@ -72,7 +72,18 @@ export default {
         ],
         pword: '',
         answer: ''
-    })
+    }),
+
+    methods: {
+        inquire_pw () {
+            let data = {
+                id: this.id,
+                pword: this.pword,
+                answer: this.answer
+            }
+            this.$http.post('/users/pwSearch', data)
+        }
+    }
 }
     
 </script>

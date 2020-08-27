@@ -65,7 +65,7 @@
                         required
                     ></v-text-field>
                 </div>
-                <v-btn color="blue">확인</v-btn>
+                <v-btn color="blue" @click="inquire_id">확인</v-btn>
             </div>
         </v-card>
     </div>
@@ -92,7 +92,20 @@ export default {
         month: '',
         day: '',
         phonenumber: ''
-    })
+    }),
+
+    methods: {
+        inquire_id () {
+            let data = {
+                name: this.name,
+                year: this.year,
+                month: this.month,
+                day: this.day,
+                phonenumber: this.phonenumber
+            }
+            this.$http.post('/users/idSearch', data)
+        }
+    }
 }
     
 </script>

@@ -252,7 +252,7 @@ export default {
     },
 
     id_check () {
-      if(this.id=="") return
+      if(this.id=="") return this.pop("아이디를 채워주세요")
       this.$http.get('/users/login/id-check',{
         params: { id: this.id }
       }).then((resp) => {
