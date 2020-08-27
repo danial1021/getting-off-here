@@ -29,13 +29,5 @@ for i in lists:
         result['run_interval'] = str(i.find('run_interval').text)
     except:
         result['run_interval'] = None
-    if collection.find_one({"lineName": result['lineName']}):
-        try:
-            linelists[result['lineName']] = int(linelists[result['lineName']]) + 1
-        except:
-            linelists[result['lineName']] = 1
-        result['lineName'] = result['lineName'] + "("+str(linelists[result['lineName']])+")"
         
-    if collection.find_one({"lineId": result['lineId']}):
-        continue
     collection.insert_one(result)

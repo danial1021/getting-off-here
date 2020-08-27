@@ -12,7 +12,7 @@
         <v-text-field label="버스 이름을 검색해주세요" v-model="busname" append-outer-icon="fas fa-search"></v-text-field>
 
         <!-- v-card 태그가 버스 한 칸입니다. -->
-          <v-card v-for="bus in buses" :key="bus.lineName[0]" class="mx-auto" max-width="100%" outlined @click="spec(bus)">
+          <v-card v-for="bus in buses" :key="bus.lineId" class="mx-auto" max-width="100%" outlined @click="spec(bus)">
               <v-list-item three-line>
                   <v-list-item-content>
                       <v-list-item-title class="headline mb-1">{{ bus.lineName[0] }}</v-list-item-title>
