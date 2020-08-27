@@ -30,7 +30,7 @@ router.post('/register', function(req, res, next) { //회원가입정보 보내�
   const cipher = crypto.createCipher('aes-256-cbc', process.env.SALT);
   const u = req.body;
   console.log(u)
-  user = new User({id:u.id, pw:u.pw, name:u.name, pword:u.pword, answer:u.answer, date: new Date(u.year, u.month, u.day), phonenumber:u.phonenumber })
+  user = new User({id:u.id, pw:u.pw, name:u.name, pword:u.pword, answer:u.answer, date: new Date(u.year, u.month-1, u.day), phonenumber:u.phonenumber })
   console.log(u)
   user.pw = cipher.update(user.pw, 'utf8', 'base64');
   user.pw += String(cipher.final('base64'));
@@ -60,7 +60,7 @@ router.get("/login/id-check", (req, res, next)=>{  //아이디 중복 확인
 router.post("/idSearch", (req, res, next)=>{
   console.log(req.body)
   const u = req.body
-  User.findOne({name : u.name, date: new Date(u.year, u.month, u.day), phonenumber:u.phonenumber })
+  User.findOne({name : u.name, date: new Date(u.year, u.month-1, u.day), phonenumber:u.phonenumber })
     .then((user)=>{
       console.log(user)
       if(user != null) return res.send({ id: user.id });

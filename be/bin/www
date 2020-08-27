@@ -10,6 +10,12 @@ var http = require('http');
 let https = require('https');
 let fs = require('fs');
 
+// var sslOptions = {
+//   ca: fs.readFileSync('bin/keys/ca_bundle.crt'),
+//   key: fs.readFileSync('bin/keys/private.key'),
+//   cert: fs.readFileSync('bin/keys/certificate.crt')
+// }
+
 /**
  * Get port from environment and store in Express.
  */
@@ -17,23 +23,18 @@ let fs = require('fs');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-// var options ={
-//   key: fs.readFileSync('bin/keys/private.pem'),
-//   cert: fs.readFileSync('bin/keys/public.pem')
-// }
-
 /**
  * Create HTTP server.
  */
 
 var server = http.createServer(app);
-//var https_server = https.createServer(options, app)
+//var https_server = https.createServer(sslOptions, app)
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-// https_server.listen('8081', ()=>{
+// https_server.listen('443', ()=>{
 //   console.log('https start');
 // });
 server.listen(port);
