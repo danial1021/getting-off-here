@@ -5,23 +5,19 @@
         <PageTitle :title=title />
 
         <v-container>
-            <v-row>
-                <v-col>
-                    <v-row
-                    :align='center'
-                    :justify='center'
-                    >
-                        <div class="box1" style="width: 400px; height: 360px; text-align: center; mamrgin-top: 20px;">
-                            <v-container @click="$router.push('/idsearch')" style="width: 180px; height: 180px; border: 1.5px solid black; float:left; ">
-                                <br><h3>아이디<br><br>찾기</h3>
-                            </v-container>
-                            <v-container @click="$router.push('/pwsearch')" style="width: 180px; height: 180px; border: 1.5px solid black; margin-left: 40px; float:left;">
-                                <br><h3>비밀번호<br><br>찾기</h3>
-                            </v-container>
-                        </div>
-                    </v-row>
-                </v-col>
-            </v-row>
+                <v-row
+                  :align='center'
+                  :justify='center'
+                >
+                    <div class="box" :class="$mq">
+                        <v-container class="SelectBox" :class="$mq" @click="$router.push('/idsearch')">
+                            <br><h3>아이디<br><br>찾기</h3>
+                        </v-container>
+                        <v-container class="SelectBox" :class="$mq" @click="$router.push('/pwsearch')" style="margin-left: 40px;">
+                            <br><h3>비밀번호<br><br>찾기</h3>
+                        </v-container>
+                    </div>
+                </v-row>            
         </v-container>
     </div>
 </template>
@@ -53,4 +49,28 @@ a {font-family: nanumgothic;}
 a:link {text-decoration: none; color: #333333;}
 a:visited {text-decoration: none; color: #333333;}
 
+.SelectBox{
+    
+    border: 1.5px solid black;
+    text-align: center;
+}
+
+.box.desktop{
+    width: 400px;
+    height: 360px;
+    margin-top: 20px;
+}
+
+.SelectBox.desktop{
+    width: 180px;
+    height: 180px;
+    float:left;
+}
+
+.SelectBox.mobile{
+    width: 90px;
+    height: 90px;
+    font-size: 60%;
+    float:left;
+}
 </style>
