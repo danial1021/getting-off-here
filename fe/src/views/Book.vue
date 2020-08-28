@@ -2,9 +2,9 @@
     <div>
         <Bar />
         <PageTitle :title=$store.state.bs />
-        <Nav />
+        <Nav style="z-index:6"/>
 
-        <div v-if="cnt == 1">
+        <div style="z-index:6" v-if="cnt == 1">
             <Map />
             <v-container>
                 <v-col align="center" justify="center" class="text-center" cols="12" sm="12">
@@ -23,14 +23,14 @@
         </div>
 
         <div v-if="cnt == 2">
-            <BusTime />
+            <BusTime style="padding-top:5%;padding-bottom:12%;" />
         </div>
 
         <v-bottom-navigation
             :value="activeBtn"
             grow
             color="teal"
-            absolute
+            style="position:fixed;left:0;right:0;z-index:2;"
         >
             <v-btn @click="cnt = 1">
             <span>예약 및 지도</span>
