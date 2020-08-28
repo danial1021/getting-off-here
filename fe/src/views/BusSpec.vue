@@ -8,7 +8,7 @@
 
     <div style="z-index:1">
       <div v-if="cnt == 1">
-        <Data style="padding-top:30%"/>
+        <Data style="padding-top:28%"/>
       </div>
       <div v-if="cnt == 2">
         <Up :buslines=buslines style="padding-top:18%;padding-bottom:12%;" />
