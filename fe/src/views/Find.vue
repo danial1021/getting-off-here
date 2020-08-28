@@ -6,8 +6,8 @@
 
         <v-container>
                 <v-row
-                  :align='center'
-                  :justify='center'
+                align="center"
+                justify="center"
                 >
                     <div class="box" :class="$mq">
                         <v-container class="SelectBox" :class="$mq" @click="$router.push('/idsearch')">
@@ -36,7 +36,6 @@ export default {
 
     data: () => ({
         title: '아이디/비번 찾기',
-        center: 'center'
     })
 }
     

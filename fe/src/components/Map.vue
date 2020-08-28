@@ -6,7 +6,7 @@
     :mapTypeId="mapTypeId"
     :libraries="libraries"
     @load="onLoad"
-    style="width:100%;height:60vh;"/>
+    style="width:100%;height:55vh;"/>
 </template>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f698a436257d54bdcbcd13e7af9d3d74&libraries=drawing"></script>
 <script>

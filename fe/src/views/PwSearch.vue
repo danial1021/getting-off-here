@@ -3,40 +3,79 @@
         <Bar />
         <Nav />
         <PageTitle :title=title />
-        <v-card
-        class="mx-auto"
-        max-width="344">
-            <div class="allbox">
-                <v-text-field
-                v-model="id"
-                :outlined=true
-                label="ID"
-                hint="4자리 이상 && 영문 숫자 혼용"  
-                :counter="20"
-                required
-                ></v-text-field>
-                <div style="margin-bottom: -20px;">
-                    <v-select
-                    :items="pword_data"
-                    v-model="pword"
-                    :outlined=true
-                    label="비밀번호 찾기 질문"
-                    ></v-select>
+        
+        <div v-if="password == ''">
+            <v-card
+            class="mx-auto"
+            max-width="344">
+                <div class="allbox">
                     <v-text-field
-                    v-model="answer"
-                    label="답변"
+                    v-model="id"
                     :outlined=true
-                    :persistent-hint=true
+                    label="ID"
+                    hint="4자리 이상 && 영문 숫자 혼용"  
+                    :counter="20"
                     required
                     ></v-text-field>
+                    <div style="margin-bottom: -20px;">
+                        <v-select
+                        :items="pword_data"
+                        v-model="pword"
+                        :outlined=true
+                        :placeholder="pword_data[0]"
+                        label="비밀번호 찾기 질문"
+                        ></v-select>
+                        <v-text-field
+                        v-model="answer"
+                        label="답변"
+                        :outlined=true
+                        :persistent-hint=true
+                        required
+                        ></v-text-field>
+                    </div>
+                    <v-btn color="blue" @click="inquire_pw">확인</v-btn>
                 </div>
-                <v-btn color="blue" @click="inquire_pw">확인</v-btn>
-            </div>
-        </v-card>
-        <!-- <br><br><br>
-        <v-alert type="warning">
-            만약 비밀번호를 찾을 수 없다면 개발자에게 문의해주세요.
-        </v-alert> -->
+            </v-card>
+        </div>
+
+        <div v-else>
+            <v-card
+            class="mx-auto"
+            max-width="344">
+                <div class="allbox">
+                    <v-text-field
+                    v-model="id"
+                    :outlined=true
+                    label="ID"
+                    hint="4자리 이상 && 영문 숫자 혼용"  
+                    :counter="20"
+                    required
+                    ></v-text-field>
+                    <div style="margin-bottom: -20px;">
+                        <v-select
+                        :items="pword_data"
+                        v-model="pword"
+                        :outlined=true
+                        :placeholder="pword_data[0]"
+                        label="비밀번호 찾기 질문"
+                        ></v-select>
+                        <v-text-field
+                        v-model="answer"
+                        label="답변"
+                        :outlined=true
+                        :persistent-hint=true
+                        required
+                        ></v-text-field>
+                    </div>
+                    <v-btn color="blue" @click="inquire_pw">확인</v-btn>
+                </div>
+            </v-card>
+
+            <br><br><br>
+            <v-alert type="success">
+                비밀번호 조회 결과: {{ this.password }}
+            </v-alert>
+        </div>
     </div>
 </template>
 
@@ -71,7 +110,9 @@ export default {
             '내가 좋아하는 캐릭터는?'
         ],
         pword: '',
-        answer: ''
+        answer: '',
+
+        password: ''
     }),
 
     methods: {
@@ -82,6 +123,11 @@ export default {
                 answer: this.answer
             }
             this.$http.post('/users/pwSearch', data)
+                .then((resp) => {
+                    // console.log(resp.data.password)
+                    this.password = resp.data.password
+                })
+                .catch(err => console.log(err))
         }
     }
 }
