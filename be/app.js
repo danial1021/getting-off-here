@@ -47,12 +47,16 @@ app.use('/api/users', usersRouter); //유저 관련 api
 app.use('/api/bus', busRouter); //버스 관련 api
 app.use('/api/busstop', busStopRouter); //정류장 관련 api
 app.use('/api/token', tokenRouter);
-app.use('/api/arrive', tokenRouter);
+app.use('/api/arrive', arriveRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+  next();
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {
