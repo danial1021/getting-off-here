@@ -6,20 +6,16 @@
 
         <div style="z-index:6" v-if="cnt == 1">
             <Map />
-            <v-container>
-                <v-col align="center" justify="center" class="text-center" cols="12" sm="12">
-                    <div class="my-2">
-                        <v-btn depressed width="80%" color="primary" @click="reser_save">예약하기</v-btn>
-                    </div>
-                </v-col>
-            </v-container>
-            <v-container>
-                <v-col align="center" justify="center" class="text-center" cols="12" sm="12">
-                    <div class="my-2">
-                        <v-btn depressed width="80%" color="primary" @click="$router.push('/')">메인으로</v-btn>
-                    </div>
-                </v-col>
-            </v-container>
+            <v-col align="center" justify="center" class="text-center" cols="12" sm="12">
+                <div class="my-2">
+                    <v-btn depressed width="80%" color="primary" @click="reser_save">예약하기</v-btn>
+                </div>
+            </v-col>
+            <v-col align="center" justify="center" class="text-center" cols="12" sm="12">
+                <div class="my-2">
+                    <v-btn depressed width="80%" color="primary" @click="$router.push('/')">메인으로</v-btn>
+                </div>
+            </v-col>
         </div>
 
         <div v-if="cnt == 2">

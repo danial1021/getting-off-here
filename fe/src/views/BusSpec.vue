@@ -11,10 +11,10 @@
         <Data style="padding-top:30%"/>
       </div>
       <div v-if="cnt == 2">
-        <Up :buslines=buslines style="padding-top:25%;padding-bottom:12%;" />
+        <Up :buslines=buslines style="padding-top:18%;padding-bottom:12%;" />
       </div>
       <div v-if="cnt == 3">
-        <Down :buslines=buslines style="padding-top:25%;padding-bottom:12%;" />
+        <Down :buslines=buslines style="padding-top:18%;padding-bottom:12%;" />
       </div>
     </div>
     <v-spacer></v-spacer>
