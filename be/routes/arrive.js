@@ -22,12 +22,12 @@ router.get('/', (req, res, next)=> { //BUSSTOP_ID라는 변수로 정류장 정�
                 var arriveInfo = JSON.parse(convert.xml2json(result, {compact: true, spaces: 4}));
                 try{
                     for (var i in arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE']){
-                        coming_bus.push({LINE_NAME:arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE'][i].LINE_NAME._text, REMAIN_MIN:arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE'][i].REMAIN_MIN._text, ARRIVE_FLAG:arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE'][i].ARRIVE_FLAG._text})
+                        coming_bus.push({LINE_NAME:arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE'][i].LINE_NAME._text, REMAIN_MIN:arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE'][i].REMAIN_MIN._text, ARRIVE_FLAG:arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE'][i].ARRIVE_FLAG._text, KEY:i})
                         }
                     }
                 catch{
                     try{
-                        coming_bus.push({LINE_NAME:arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE'].LINE_NAME._text, REMAIN_MIN:arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE'].REMAIN_MIN._text, ARRIVE_FLAG:arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE'].ARRIVE_FLAG._text})
+                        coming_bus.push({LINE_NAME:arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE'].LINE_NAME._text, REMAIN_MIN:arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE'].REMAIN_MIN._text, ARRIVE_FLAG:arriveInfo['ns2:ARRIVE_INFO']['ARRIVE_LIST']['ARRIVE'].ARRIVE_FLAG._text, KEY:0})
                     }
                     catch{
                         coming_bus.push({})
