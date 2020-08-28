@@ -56,6 +56,12 @@ Vue.use(VueRouter)
     component: () => import('../views/SignUp.vue')
   },
   {
+    path: '/meminfo',
+    name: 'Meminfo',
+    component: () => import('../views/Meminfo.vue'),
+    beforeEnter: requireAuth
+  },
+  {
     path: '/find',
     name: 'Find',
     component: () => import('../views/Find.vue')
