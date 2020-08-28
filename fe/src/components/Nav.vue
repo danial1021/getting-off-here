@@ -193,9 +193,11 @@ export default {
         return this.$store.getters.isAuthenticated
     },
     meminfo () {
+      this.$store.state.drawer = !this.$store.state.drawer
       this.$router.push("/meminfo").catch((e)=>{console.log(e)});
     },
     reservation () {
+      this.$store.state.drawer = !this.$store.state.drawer
       this.$router.push("/reservation").catch((e)=>{console.log(e)});
     }
   },

@@ -16,6 +16,14 @@ export default {
 
     methods: {
     },
+
+    mounted () {
+        this.$http.get('/arrive', {
+            params: { BUSSTOP_ID: this.$store.state.bi }
+        }).then((resp) => {
+            console.log(resp.data)
+        }).catch(err => console.log(err))
+    }
 }
 </script>
 
