@@ -4,9 +4,9 @@
         <Nav />
         <PageTitle :title=title />
             <v-row
-              align="center"
-              justify="center"
-              :class="$mq"
+            align="center"
+            justify="center"
+            :class="$mq"
             >
                 <table border="1" style="border: 1px solid #000000; text-align: center;">
                     <tr>
@@ -29,8 +29,10 @@
                                 <v-text-field
                                     :outlined=true
                                     :persistent-hint=true
-                                    required>
+                                    required
+                                >
                                 </v-text-field>
+                                비밀번호를 재설정하기를 원하신다면 비밀번호와 비밀번호 질문을 모두 채워주세요
                             </div>
                         </td>
                     </tr>
@@ -72,7 +74,7 @@
             </v-row>
             <br>
             <div class="button" :class="$mq">
-                <v-btn color="blue">확인</v-btn>
+                <v-btn color="blue">수정</v-btn>
             </div>
     </div>
 </template>
