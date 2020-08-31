@@ -23,5 +23,13 @@ SALT = (암호화용 문자열)
 이렇게 값을 넣어주시면 됩니다.  
 be -> crawling 폴더 안에 있는 파이썬 파일을 실행시켜서 db정보를 넣으셔야 합니다.
 
+## 사용 방법
+
+fe와 be에 각각 npm install 실행 후 
+cd fe && npm run serve
+cd be && npm start(mongodb)
+서버 돌리기용 commit 이전부터(184commit)에서 사용하시면 좋을 것 같습니다
+
 ### 현재 상황
+
 nfc모듈과의 기능 구현에 어려움이 있어 -> 추후에 정보 및 기술이 나온 후에 보완예정
