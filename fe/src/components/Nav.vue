@@ -88,7 +88,10 @@
         </v-list-item>
       </v-list-item-group>
     </v-list>
-    <v-img src="../assets/ads.png" style="position:absolute;bottom:0px;"></v-img>
+    <v-flex style="position:absolute;bottom:0px;">
+      <v-img src="../assets/1.png"></v-img>
+      <v-img src="../assets/2.png"></v-img>
+    </v-flex>
   </v-navigation-drawer>
 </template>
 
