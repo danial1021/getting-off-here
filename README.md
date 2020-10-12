@@ -1,6 +1,8 @@
 # getting-off-here
 버스앱 서비스 관련 PWA 애플리케이션
 
+<img src="fe/public/img/icons/icon-128x128.png"/>
+
 ## 👪 기여자
 
 repository에 대해 더 좋은 방향으로 나아갈 수 있다면 언제든지 Issue 및 Pull Request를 요청하세요!
